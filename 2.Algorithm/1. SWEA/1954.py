@@ -6,8 +6,7 @@ snail_list = [[0]*num]*num    # 0으로 이루어진 num x num의 2차원 배열
 digit = int(1)
 print('#',str(case_count))
 t = int(0)
-r_num = int(num/2 if num % 2 == 0 else (num+1)/2) +1
-for t in range(r_num):
+while t <= num-2*t:
     for i in range(num-2*t):
         snail_list[i+t][t] = digit
         digit += 1
@@ -20,6 +19,7 @@ for t in range(r_num):
     for q in range(num-2*t):
         snail_list[t][(num-t)-1-q] = digit
         digit += 1
-
+    else:
+        t += 1
 case_count += 1
 print(snail_list)
