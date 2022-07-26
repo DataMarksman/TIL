@@ -1,7 +1,7 @@
 case_count = int(1)
 num = int(input())
 print('#',str(case_count))
-snail_list = [[0]*num]*num
+snail_list = [[0]*num for j in range(num)]
 start_num = int(1)
 t = int(0)
 for t in range(num-2*t):

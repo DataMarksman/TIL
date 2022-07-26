@@ -1,6 +1,6 @@
 case_count = int(1)
 num = int(input())
-snail_list = [[0]*num]*num    # 0으로 이루어진 num x num의 2차원 배열 생성
+snail_list = [[0]*num for j in range(num)]
 print('#',str(case_count))
 t = int(0)
 start_num = int(1)
