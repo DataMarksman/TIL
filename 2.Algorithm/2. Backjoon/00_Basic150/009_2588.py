@@ -1,8 +1,10 @@
 A = int(input())
-B = map(int,input())
+B = list(map(int,input()))
 C = []
-for num in B:
-    C += int(num)*A
+
+
+for i in range(len(B)):
+    C += [int(B[i])*A]
 
 print(C[2])
 print(C[1])
