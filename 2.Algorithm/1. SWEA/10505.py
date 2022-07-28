@@ -1,10 +1,10 @@
-N = int(input())
-for i in range(N):
-    line = map(int,input(a,list(b)).split())
-    T = a
-    A = b
-    print(a)
-    print(b)
-    ans = sum(A)/int(T)
-return ans
+from numpy import average
 
+
+case = int(input())
+
+for i in range(case):
+    num = int(input())
+    line = list(map(int,input().split()))
+    ans = sum(1 for i in line if i < (sum(line)/len(line)))
+    print(f'#{i+1} {ans}')
