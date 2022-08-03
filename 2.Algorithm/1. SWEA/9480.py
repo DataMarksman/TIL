@@ -1,30 +1,36 @@
 T = int(input())
 
 for i in range(T):
-    alp_list = list("abcdefghijklmnopqrstuvwxyz")
-    count_list = list([0]*26)
-    case_num = int(input())
-    word_stock = []
-    alp_stock = []
-    for j in range(case_num):
-        word_stock += [str(j)]
-        alp_stock += list(str(j))
-    for k, alp in enumerate(alp_list):
-        count_list[k] = alp_stock.count(alp)
-    if count_list.count(int(0)) != 0:
+    alp_list = list("abcdefghijklmnopqrstuvwxyz")   # 알파벳 str을 리스트 형식으로 받아줍니다. = 알파벳을 좌표로 받아오기 위함
+    count_list = list([0]*26)                       # 각 좌표별 알파벳의 개수를 카운팅하는 리스트 입니다.
+    case_num = int(input())                         # 단어를 몇개 받을 건지 먼저 선언해줍니다.
+    word_stock = []                                 # 받는 단어들을 저장해둘 장소이고,
+    alp_stock = []                                  # 해당 단어들의 알파벳만 빼서 넣어둘 장소입니다.
+    for j in range(case_num):                       # 받는 단어 개수만큼 반복하는데,
+        inp_word = str(input())                     # 단어를 받아서 inp_word에 임시저장하고
+        word_stock += [str(inp_word)]               # 단어 저장소에는 str로 저장하며
+        alp_stock += list(str(inp_word))            # 알파벳 저장소에는 알파벳으로 저장합니다. (list로 분해하여)
+    for k, alp in enumerate(alp_list):              # 앞서 만들어놓은 알파벳 좌표 리스트를 이뉴머레이트로 (좌표,알파벳)의 튜플로 구성된 리스트로 뽑아오고 for문을 돌립니다.
+        count_list[k] = alp_stock.count(alp)        # 이렇게 돌린 for문에서 각 A부터 Z까지 하나하나의 알파벳 개수를 알파벳 저장소에서 카운팅하여 카운트 리스트에 순서대로 저장합니다.
+    if count_list.count(int(0)) != 0:               # 이렇게 저장되면, A의 개수가 count_list[0]에 저장되는 방식으로 저장되는데, 이를 통해 요소 중에 0이 없으면 적어도 한번씩 들어간 것으로 간주합니다.
         print('이 단어들은 알파벳을 전부 포함하고 있지 않습니다.')
         continue
-    picked_alp = set()
-    for hit in range(len(count_list)):
-        count_list[hit] -= 1
+    picked_alp = set()                              # 이제 전체 케이스를 줄이는 과정을 밟습니다.
+    for hit in range(len(count_list)):              # 이하의 과정은 한번씩 등장하는 알파벳을 제거하고 2번 이상 등장하는 알파벳만 남기는 과정입니다.
+        count_list[hit] -= 1                        # 다 풀고나니 안건데, 굳이 이거 안해도 됩니다. 약간 빨라지긴 할텐데 코드가 길어지는 역효과가 있습니다.
         if count_list[hit] > 0:
             picked_alp.add(alp_list[hit])
-    picked_word = []
-    for word in word_stock:
-        if set(list(word)) & picked_alp == len(list(word)):
-            picked_word += [word]
-            
+    picked_word = []                                # 이를 기반으로 2번 이상 등장한 알파벳으로 조합할 수 있는 단어들만 추려내는 과정을 밟습니다.
+    for word in word_stock:                                 # 자, 여기서 부터 메인입니다. 아까 받았던 단어 저장소에서 단어들을 하나씩 가져옵니다.
+        if set(list(word)) & picked_alp == len(list(word)): # 그 단어들을 분해하여 각 알파벳이 아까 한번 걸렀던 2번 이상 등장한 알파벳 집합에 들어있는지 확인합니다.
+            picked_word += [word]                           # 자, 단어들이 전부 알파벳 조합에 들어가 있으면, 해당 단어를 픽 단어에 넣습니다. 일단 여기에서는 중복 알파벳은 고려하지 않습니다.
     
+    for i in range(len(count_list)):
+        count_list[i] -= 1
+
+    for case_rutin in range(len(picked_word)):
+        tmp_count = count_list[:]
+    #    if list(str(picked_word[case_rutin]))
 
 
 
