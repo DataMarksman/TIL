@@ -6,35 +6,36 @@
 T = 10
 for case_num in range(1, T+1):
     N = int(input())
-    box_list = map(int, input().split())
-    count_list_1 = [0] * 101
-    count_list_2 = [0] * 101
+    box_list = list(map(int, input().split()))
+    dump_up_list = [0] * 101
+    dump_down_list = [0] * 101
     for box in box_list:
-        count_list_1[box] += 1
-        count_list_2[box] += 1
-    # 조건은 3개.
-    # 1. 앞에서 가는 moving
-    # 2. 뒤에서 가는 moving
-    # 3. 그 두 moving 이 만나는가의 여부
+        dump_up_list[box] += 1
+        dump_down_list[box] += 1
+    # 생각해야할 부분은 3개.
+    # 1. 밑에서 위로 가는 dump
+    # 2. 위에서 아래로 내려오는 dump
+    # 3. 그 두 dump가 만나는가의 여부
 
-    moving_1 = 0
-    count_1 = 0
-    while moving_1 <= N and count_1 != 101:
-        moving_1 += count_list_1[count_1]
-        count_list_1[count_1 + 1] += count_list_1[count_1]
-        count_1 += 1
-    low_box = count_1 - 1
-
-    moving_2 = 0
-    count_2 = 100
-    while moving_2 <= N and count_2 != 0:
-        moving_2 += count_list_2[count_2]
-        count_list_2[count_2 - 1] += count_list_2[count_2]
-        count_2 -= 1
-    high_box = count_2 + 1
-
-    if low_box >= high_box:
-        ans = 1
+    dump_up = 0                                             # dump_up -> 아래층 부터 누적합을 쌓아가는 덤프 시행횟수
+    up_count = 0                                            # UP_count -> 몇번 밟았나 = 현재 공사 진행중인 층 수
+    
+    while dump_up < N and up_count != 101:                  # <반복> 아래층부터 한층씩 누적합을 쌓아가며 올라가기
+        dump_up += dump_up_list[up_count]                   # 해당 층의 모든 박스 개수 만큼 덤프 횟수에 추가하고
+        dump_up_list[up_count + 1] += dump_up_list[up_count]# 다음 층에 그 박스 개수만큼 더해줌
+        up_count += 1                                       # 한 층 올라감
+    low_box = up_count-1                                    # dump_up이 N을 넘어갈 경우 멈추기 때문에,
+                                                            # -> 실제로 공사 중인 층은 현재 층보다 한칸 아래임.
+    dump_down = 0
+    down_count = 100
+    while dump_down < N and down_count != 0:                # dump_down -> 최상층 부터 누적합을 쌓아가는 덤프 시행횟수
+        dump_down += dump_down_list[down_count]             # down_count -> 몇번 밟았나 = 현재 공사 진행중인 층 수
+        dump_down_list[down_count - 1] += dump_down_list[down_count]
+        down_count -= 1                                     # 한 층 내려감
+    high_box = down_count+1                                 # dump_down이 N을 넘어갈 경우 멈추기 때문에,
+                                                            # -> 실제로 공사 중인 층은 현재 층보다 한칸 위임.
+    if low_box >= high_box:                                 # 덤프를 너무 많이 해서 서로 중간에 지나쳐가게 되면, 
+        ans = 1                                             # 최하층이 최상층보다 같거나 높게 나오므로 1을 반환
     else:
         ans = high_box - low_box
     print(f'#{case_num} {ans}')
