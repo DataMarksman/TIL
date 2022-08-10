@@ -4,5 +4,12 @@
 
 # print(aa.get('AA'))
 
-A = (10,5) + (1,0)
-print(A)
+from itertools import count
+
+
+A = [{'rocation': [1,1],'move':1, 'energy':10}, {'rocation': [1,1],'move':1, 'energy':10}, {'rocation': [2,2],'move':3, 'energy':10}, ]
+
+roc_list = A.values('rocation')
+
+L = A.count('rocation': [1,1] and 'move':1)
+print(L)
