@@ -13,7 +13,7 @@
 # 그중에 점수가 86점 이상인 것들만 모아보면 된다.
 
 
-T = int(input())1
+T = int(input())
 for i in range(1,T+1):
     board = [0]*19
     enemy_cards = list(map(int,input().split()))
@@ -25,4 +25,6 @@ for i in range(1,T+1):
             my_cards += [mycard]
     print(my_cards)
     
-    
+my_card_list [ 1,2,3,4,5,6,7,8 ]
+my_card_position [ ]
+for myard

@@ -3,13 +3,7 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-
-from itertools import count
-
-
-A = [{'rocation': [1,1],'move':1, 'energy':10}, {'rocation': [1,1],'move':1, 'energy':10}, {'rocation': [2,2],'move':3, 'energy':10}, ]
-
-roc_list = A.values('rocation')
-
-L = A.count('rocation': [1,1] and 'move':1)
-print(L)
+cur_po = [1,0]
+print(cur_po)
+cur_po = [int(cur_po[0])+4, int(cur_po[1])]
+print(cur_po)
