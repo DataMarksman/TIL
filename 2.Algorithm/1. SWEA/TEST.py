@@ -3,7 +3,3 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-cur_po = [1,0]
-print(cur_po)
-cur_po = [int(cur_po[0])+4, int(cur_po[1])]
-print(cur_po)
