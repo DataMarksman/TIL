@@ -18,7 +18,8 @@ for case_num in range(1,T+1):
     for turn in range(2000):
         for atom in dict_Atom:
             if atom['move'] == 0 and dict_Atom.get(atom['rocation']+ (0,1)):
-                atom['rocation'][0] += (0,1)
+                atom['rocation'][0] 
+                += (0,1)
             elif atom['move'] == 1:
                 atom['rocation'] += (0,-1)
             elif atom['move'] == 2:
@@ -31,11 +32,12 @@ for case_num in range(1,T+1):
         
         for atom in dict_Atom:
             if atom['move'] == 0:                  # up
-                atom['rocation'][0] += 
+                atom['rocation'][0] -= 1 
             elif atom['move'] == 1:
-                atom['rocation'] += (0,-1)
+                atom['rocation'][0] += 1
             elif atom['move'] == 2:
-                atom['rocation'] += (-1,0)
+                atom['rocation'][1] -= 1
             elif atom['move'] == 3:
-                atom['rocation'] += (1,0)
+                atom['rocation'][1] += 1
+        roc_list = dict_Atom.values('rocation')
         

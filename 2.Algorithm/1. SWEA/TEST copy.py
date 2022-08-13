@@ -3,5 +3,8 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-
-board = (input().split('\n') for _ in range(5))
+cards = [1, 2, 3]
+new_list = []
+def permutation(list_card):
+    for chcking in range(3):
+        if cards[chcking] not in 
