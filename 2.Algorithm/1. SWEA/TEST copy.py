@@ -3,8 +3,7 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-cards = [1, 2, 3]
-new_list = []
-def permutation(list_card):
-    for chcking in range(3):
-        if cards[chcking] not in 
+tmp_word = str('santaislie')
+print(tmp_word[0:5])
+print(tmp_word[0:5][::-1])
+
