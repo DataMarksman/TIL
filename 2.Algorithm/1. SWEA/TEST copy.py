@@ -3,7 +3,5 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-tmp_word = str('santaislie')
-print(tmp_word[0:5])
-print(tmp_word[0:5][::-1])
-
+for i in range(1, 0):
+    print(i)

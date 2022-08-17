@@ -4,4 +4,18 @@
 
 # print(aa.get('AA'))
 
-board = (input().split('\n') for _ in range(5))
+def combination(arr, n):
+    result = []
+    if n == 0:
+        return [[]]
+
+    for i in range(len(arr)):
+        elem = arr[i]
+        for rest in combination(arr[i + 1:], n - 1):
+            result.append([elem] + rest)
+    return result
+
+
+list_A = [0, 1, 2, 3]
+for j in range(len(list_A)):
+    print(combination(list_A, j))
