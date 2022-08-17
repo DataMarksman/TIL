@@ -3,11 +3,11 @@
 # aa = {'0': 'AA','1': 'BB','2': 'CC'}
 
 # print(aa.get('AA'))
-
+"""
 def combination(arr, n):
     result = []
     if n == 0:
-        return [[]]
+        return [result]
 
     for i in range(len(arr)):
         elem = arr[i]
@@ -19,3 +19,18 @@ def combination(arr, n):
 list_A = [0, 1, 2, 3]
 for j in range(len(list_A)):
     print(combination(list_A, j))
+"""
+
+
+def test(x):
+    list_A = []
+    count = 0
+    if x < 10:
+        count += 1
+        list_A += [x]
+        test(x+1)
+    else:
+        return [list_A]
+
+
+print(test(1))
