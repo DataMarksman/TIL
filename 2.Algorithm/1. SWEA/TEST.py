@@ -21,7 +21,7 @@ for j in range(len(list_A)):
     print(combination(list_A, j))
 """
 
-
+"""
 def test(x):
     list_A = []
     count = 0
@@ -34,3 +34,16 @@ def test(x):
 
 
 print(test(1))
+"""
+
+"""
+in_case = ['(', '[', '{', '<', ' ']
+out_case = []
+if '{' in in_case:
+    print('hi')
+out_case += [in_case.pop()]
+print(out_case)
+"""
+
+
+print(5!)
