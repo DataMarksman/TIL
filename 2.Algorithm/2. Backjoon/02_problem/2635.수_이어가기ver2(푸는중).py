@@ -1,39 +1,48 @@
 def fibo(n):
     if n <= 1:
         return 1
-    elif n >= 2 and len(fibo_memo) < n+1:
-        fibo_memo.append(fibo(n-1)+fibo(n-2))
-    return fibo_memo[n]
+    ans = fibo(n-1) + fibo(n-2)
+    return ans
 
 
-fibo_memo = [1, 1, 2, 3, 5]
+def fibo_check(cnt):
+    global even_stack
+    global odd_stack
+    n = fibo(cnt-1) / fibo(cnt)
+    if cnt % 2 == 0:
+        for k in range(len(odd_stack)):
+            if odd_stack[k] <= n * N:
+                even_stack.append(odd_stack[k])
+        else:
+            if len(even_stack) >= 1:
+                odd_stack = []
+                return fibo_check(cnt +1)
+            else:
+                return odd_stack
+    elif cnt % 2 != 0:
+        for t in range(len(even_stack)):
+            if even_stack[t] >= n * N:
+                odd_stack.append(even_stack[t])
+        else:
+            if len(odd_stack) >= 1:
+                even_stack = []
+                return fibo_check(cnt + 1)
+            else:
+                return even_stack
+
+
 N = int(input())
-stack = []
+even_stack = []
+odd_stack = []
 flag = True
-count = 1
 for i in range(N//2, N):
-    stack += [i]
-while flag:
-    count += 1
-    combo = fibo(count - 1) / fibo(count)
-    tmp_list = []
-    if count % 2 == 0:
-        for k in range(len(stack)):
-            if stack[k] <= combo * N:
-                tmp_list += [k]
-    else:
-        for t in range(len(stack)):
-            if stack[k] >= combo * N:
-                tmp_list += [t]
-    if len(tmp_list) >= 1:
-        stack = tmp_list
-        count += 1
-    elif len(tmp_list) == 0:
-        break
-print(stack, count)
+    even_stack += [i]
+    odd_stack += [i]
+
+print(fibo_check(5))
 
 """
 while flag:
-    count += 1
+    cnt += 1
     
 """
