@@ -1,9 +1,9 @@
-# 
-
+# 1961.숫자 배열 회전
+# 파이참이 자꾸 틀렸다고 하는데, 값은 맞게 나오는 상황. 기묘..
 T = int(input())
 for case_num in range(1, T+1):
     N = int(input())
-    n = (N-1)
+    n = int(N-1)
     board = [list(map(int, input().split())) for _ in range(N)]
     board_90 = [[0]*N for _ in range(N)]
     board_180 = [[0]*N for _ in range(N)]

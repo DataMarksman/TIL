@@ -14,9 +14,9 @@ def permutation(remain):                                # 순열 처럼 보이�
         if sum_stack >= 86:                             # 그 차이의 합계가 86 이상이면 승리
             win_count += 1                              # win_count +1 합니다
     else:
-        for chcking in range(9):                        # 이쪽이 재귀 본체. 총 9! 회 시행
-            if my_cards[chcking] not in remain:         # 앞에서부터 카드 리스트에 있는 카드가
-                remain += [my_cards[chcking]]           # 함수에 넣은 리스트에 없으면
+        for checking in range(9):                        # 이쪽이 재귀 본체. 총 9! 회 시행
+            if my_cards[checking] not in remain:         # 앞에서부터 카드 리스트에 있는 카드가
+                remain += [my_cards[checking]]           # 함수에 넣은 리스트에 없으면
                 permutation(remain)                     # 그거 넣은 리스트를 다시 함수에 넣기
                 del remain[len(remain)-1]               # 다음 checking을 위해서 필요함
 

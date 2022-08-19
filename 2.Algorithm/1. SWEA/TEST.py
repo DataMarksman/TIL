@@ -45,5 +45,4 @@ out_case += [in_case.pop()]
 print(out_case)
 """
 
-
-print(5!)
+print(int(''.join(list(bin(10)[2:][::-1])), 10))
