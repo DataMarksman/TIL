@@ -45,4 +45,9 @@ out_case += [in_case.pop()]
 print(out_case)
 """
 
-print(int(''.join(list(bin(10)[2:][::-1])), 10))
+list_A = [0,1,2,3,4,5,60,7,8,9,10]
+target = max(list_A)
+position = list_A.index(target)
+for selling in range(position+1):
+    list_A.pop(position-selling)
+print(list_A[position::-1])
