@@ -44,10 +44,15 @@ if '{' in in_case:
 out_case += [in_case.pop()]
 print(out_case)
 """
-
+"""
 list_A = [0,1,2,3,4,5,60,7,8,9,10]
 target = max(list_A)
 position = list_A.index(target)
 for selling in range(position+1):
     list_A.pop(position-selling)
 print(list_A[position::-1])
+"""
+
+V = 5
+start = set(t for t in range(V))
+print(start)
