@@ -5,30 +5,30 @@
 # 1. 지금 이대로 진행하면 4중 for 문이다. 효과적인 방법은 없는가?
 def lining(check_list, n, k):
     global ans_list
-    if n >= M:
-        pass
-    elif n == 0:
+    if n == 0:
         for checking in range(M):
             if start % multiple_list[checking][0] == 0:
                 if end % multiple_list[checking][1] == 0:
                     ans_list += [1]
                 else:
                     check_list[checking] = 1
-                    k = multiple_list[checking][1]
+                    k = (N//multiple_list[checking][1])*multiple_list[checking][1]
                     lining(check_list, n+1, k)
-                    check_list[checking] = 0
+    elif n >= M:
+        for checking in range(M):
+            if k % multiple_list[checking][0] == 0:
+                if end % multiple_list[checking][1] == 0:
+                    ans_list += [n + 1]
+
     else:
         for checking in range(M):
-            if check_list[checking] == 0:
-                t = multiple_list[checking][0]
-                if k % t == 0 or t % k == 0 or N >= t*k:
-                    if end % multiple_list[checking][1] == 0:
-                        ans_list += [n + 1]
-                    else:
-                        check_list[checking] = 1
-                        k = multiple_list[checking][1]
-                        lining(check_list, n + 1, k)
-                        check_list[checking] = 0
+            if k % multiple_list[checking][0] == 0 and check_list[checking] == 0:
+                if end % multiple_list[checking][1] == 0:
+                    ans_list += [n + 1]
+                else:
+                    check_list[checking] = 1
+                    k = (N // multiple_list[checking][1]) * multiple_list[checking][1]
+                    lining(check_list, n + 1, k)
 
 
 T = int(input())
