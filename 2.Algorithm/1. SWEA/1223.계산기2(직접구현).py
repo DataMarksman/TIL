@@ -14,7 +14,6 @@ for case_num in range(1,T+1):
     priority_c = {'*':2,'/':2,'+':1,'-':1,'(':3}
     priority_s = {'*':2,'/':2,'+':1,'-':1,'(':0}
     while input_list:
-        print(ans_list, tag_stack, tag_top)
         pick = input_list.pop(0)
         if pick.isnumeric():
             ans_list += pick
@@ -37,9 +36,11 @@ for case_num in range(1,T+1):
                     pick = tag_stack.pop()
                     tag_top -= 1
                     ans_list += pick
+                    if not tag_stack:
+                        break
                 ans_list += tmp_tag
     while tag_stack:
-        ans_list += tag_stack.pop()
+        ans_list += [tag_stack.pop()]
     print(ans_list)
 
 
