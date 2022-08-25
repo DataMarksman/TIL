@@ -7,7 +7,7 @@ def queen_up(check, cross_check, r_cross_check, n):               # 재귀용 �
 
     else:                                                         #
         for i in range(N):                                        #
-            if (i not in check) and ((n+i) not in cross_check) and ((N+(n - i)) not in r_cross_check):
+            if i not in check and (n+i) not in cross_check and (N+(n - i)) not in r_cross_check:
                 check.add(i)                                      # 앞서 밟았던 열, 대각선, 역대각선이 아니라면,
                 cross_check.add(n+i)                              # 내가 밟은 열, 대각선, 역대각선에 표시해주기
                 r_cross_check.add(N+(n-i))

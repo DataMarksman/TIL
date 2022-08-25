@@ -53,6 +53,5 @@ for selling in range(position+1):
 print(list_A[position::-1])
 """
 
-V = 5
-start = set(t for t in range(V))
-print(start)
+list_A = [[1,2,3,4,5],[1,2,3,4,5,6,7]]
+print(list_A[0:2][2])
