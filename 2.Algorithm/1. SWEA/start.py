@@ -9,4 +9,7 @@
 
 
 T = int(input())
-for case_num in range(1,T+1):
+for case_num in range(1, T + 1):
+    N = int(input())
+
+    print(f'#{case_num} {ans}')
