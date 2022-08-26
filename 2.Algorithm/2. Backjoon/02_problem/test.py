@@ -1,21 +1,13 @@
-def fibo(n):
-    if n <= 1:
-        return 1
-    ans = fibo(n-1) + fibo(n-2)
-    return ans
 
 
-N = int(input())
-stack = []
-flag = True
-count = 1
-for i in range(N//2, N):
-    stack += [i]
-while flag:
-    count += 1
-    combo = fibo(count - 1) / fibo(count)
-    print(count, combo)
-    tmp_list = []
-    if count % 2 == 0:
-        for k in range(len(stack)):
-            if stack[k] >= combo * N:
+M = 8
+batch_set = set()
+batch_position = [t for t in range(M)]
+
+for i in range(M):
+    for j in range(M):
+        for k in range(M):
+            if i < j < k:
+                batch_set.add((i, j, k))
+print(batch_position)
+print(batch_set)
