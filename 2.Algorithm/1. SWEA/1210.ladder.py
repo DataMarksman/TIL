@@ -1,21 +1,68 @@
-T = 10                                                          #
-for tc in range(1, T + 1):                                      # 
-    case_num = int(input())                                     # 
-    board_input = [list(map(int, input().split()))\
-                    for _ in range(100)]
-    board = [[0]*102 for _ in range(100)]                       # 보드 양쪽에 0 만들어주기
-    for cols in range(100):                                     # 
-        for rows in range(100):                                 #
-            board[rows][cols+1] = board_input[rows][cols]       #
-    start_point = []                                            # 스타트 포인트 저장할 스톡
-    for starting in range(100):                                 # 
-        if board[0][starting] == 1:                             # 스타트 지점 반환
-            start_point += [[0, starting]]                      #
-    flag = False                                                # 도착점 (2) 찾았는지 여부
-    for ladder_start in start_point:                            # 각 스타트 지점에서 함수 시작
-        start_dX = ladder_start[0]                              #
-        start_dY = ladder_start[1]                              #
-        flag = laddering(start_dX, start_dY, 1)                 # 2에 도착하면 flag = True
-        if flag:                                                # 
-            print(f'#{case_num} {start_dY}')                    # flag가 True면 프린트 이후 break
+# 1210. ladder 1
+# 설계: 그냥 가.
+
+def laddering(input_0, input_1, go_dir):
+    po_0 = input_0
+    po_1 = input_1
+    cur_dir = go_dir
+    while po_0 < 99:
+        if cur_dir == 1:
+            if board[po_0][po_1 + 1] == 1:
+                cur_dir = 3
+                po_1 += 1
+                return laddering(po_0, po_1, cur_dir)
+            elif board[po_0][po_1 - 1] == 1:
+                cur_dir = 2
+                po_1 -= 1
+                return laddering(po_0, po_1, cur_dir)
+            elif board[po_0 + 1][po_1] == 2:
+                return True
+            elif board[po_0 + 1][po_1] == 1:
+                po_0 += 1
+                return laddering(po_0, po_1, cur_dir)
+        elif cur_dir == 2:
+            if board[po_0 + 1][po_1] == 2:
+                return True
+            elif board[po_0 + 1][po_1] == 1:
+                cur_dir = 1
+                po_0 += 1
+                return laddering(po_0, po_1, cur_dir)
+            elif board[po_0][po_1 - 1] == 1:
+                po_1 -= 1
+                return laddering(po_0, po_1, cur_dir)
+        elif cur_dir == 3:
+            if board[po_0 + 1][po_1] == 2:
+                return True
+            elif board[po_0 + 1][po_1] == 1:
+                cur_dir = 1
+                po_0 += 1
+                return laddering(po_0, po_1, cur_dir)
+            elif board[po_0][po_1 + 1] == 1:
+                po_1 += 1
+                return laddering(po_0, po_1, cur_dir)
+    if po_0 == 99:
+        if board[po_0][po_1] == 2:
+            return True
+        else:
+            return False
+
+
+T = 10
+for tc in range(1, T + 1):
+    case_num = int(input())
+    board_input = [list(map(int, input().split())) for _ in range(100)]
+    board = [[0]*102 for _ in range(100)]
+    for cols in range(100):
+        for rows in range(100):
+            board[rows][cols+1] = board_input[rows][cols]
+    start_point = []
+    for starting in range(len(board[0])):
+        if board[0][starting] == 1:
+            start_point += [starting]
+    flag = False
+    for ladder_start in range(len(start_point)):
+        input_start = int(start_point[ladder_start])
+        flag = laddering(0, input_start, 1)
+        if flag:
+            print(f'#{case_num} {input_start-1}')
             break
