@@ -38,7 +38,7 @@ def positioning(gate_A, gate_B, gate_C, moving_sum, check_list):
                                 moving_sum += abs(sec_y - position[1])
                             elif waiting[1] > 0:
                                 gate_2_queue.append(sec_y)
-
+                            
 
 
 
