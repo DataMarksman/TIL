@@ -11,10 +11,6 @@
 #                 batch_set.add((i, j, k))
 # print(batch_position)
 # print(batch_set)
-
-
-list_A = [[1,2,3],[2,3,4],[3,4,5]]
-
-list_B = [1,2,3,4,5,6,7,8,9]
-
-print(list_B[2:2])
+A = [1,2,3,4,5,6,7,8,9]
+line_up = A[:3]+[0]+A[3:]
+print(line_up)
