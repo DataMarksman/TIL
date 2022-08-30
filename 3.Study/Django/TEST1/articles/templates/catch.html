@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>catch : 여기서 받음!</h2>
+  <h3>뭘 받았냐? : {{ myMessage }}</h3>
+
+  {% comment %} <a href="/throw/">다시 던지러 갈까?</a> {% endcomment %}
+  <a href="{% url 'throw' %}">다시 던지러 갈까?</a>
+
+{% endblock content %}

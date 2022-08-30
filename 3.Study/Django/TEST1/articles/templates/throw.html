@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Throw에 오신걸 환영합니다.</h2>
+
+  <form action="/catch/" method="GET">
+    <label for="link">입력해볼까? :</label>
+    <input type="text" id='link' name='message'>
+    <input type="submit" value='전송'>
+    {% comment %} <button>여기가 버튼 이름</button> {% endcomment %}
+  </form>
+{% endblock content %}
