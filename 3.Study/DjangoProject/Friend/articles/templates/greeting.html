@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>{{name}}님 환영합니다!</h1>
+    <p>야생의 {{age}}세 가 나타났다.</p>
+
+    {% if result %}
+        <p>{{word}}는 회문 공격을 받았다!</p>
+    {% else %}
+        <p>{{word}}는 회문 공격에 실패했다.</p>
+    {% endif %}
+
+{% endblock content %}
+

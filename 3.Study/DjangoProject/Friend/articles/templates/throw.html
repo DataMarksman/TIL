@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <h1>{{name}}님 환영합니다!</h1>
+    <h1>Throw 과장님을 {{count}}번 찔렀습니다.</h1>
+    <h2>과장님은 {{random}}의 데미지를 받았습니다.</h2>
+    {% if last_hp > 0 %}
+    <h2>과장님의 남은 체력은 {{last_hp}}입니다.</h2>
+    {% endif %}
+    {% if last_hp <= 0 %}
+    <h2>과장님은 이미 죽었습니다.</h2>
+    {% endif %}
+    
+    <form action="/catch/" method="GET">
+        <label for="idx_p">희망 데미지:</label>
+        <input type="text" id="idx_p" name="message">
+        <input type="submit" value='때리기'>
+
+    </form>
+
+{% endblock content %}
+

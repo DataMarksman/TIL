@@ -12,5 +12,5 @@
 # print(batch_position)
 # print(batch_set)
 A = [1,2,3,4,5,6,7,8,9]
-line_up = A[:3]+[0]+A[3:]
+line_up = A[1:6]
 print(line_up)
