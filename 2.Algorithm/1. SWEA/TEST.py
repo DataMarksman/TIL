@@ -56,12 +56,15 @@ print(list_A[position::-1])
 list_A = [[1,2,3,4,5],[1,2,3,4,5,6,7]]
 print(list_A[0:2][2])
 """
-M = 5
-batch_position = [i for i in range(M)]
-print(batch_position)
-
-K = 5
-if 1 in range(K-4, K+4):
-    print(range(K-4, K+4))
-    print('hi')
-
+# M = 5
+# batch_position = [i for i in range(M)]
+# print(batch_position)
+#
+# K = 5
+# if 1 in range(K-4, K+4):
+#     print(range(K-4, K+4))
+#     print('hi')
+num_list = [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
+A = 7
+ans = int(str(A)*num_list[A])
+print(ans)
