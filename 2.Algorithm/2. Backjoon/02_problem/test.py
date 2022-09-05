@@ -11,6 +11,13 @@
 #                 batch_set.add((i, j, k))
 # print(batch_position)
 # print(batch_set)
-A = [1,2,3,4,5,6,7,8,9]
-line_up = A[1:6]
-print(line_up)
+# A = [1,2,3,4,5,6,7,8,9]
+# line_up = A[1:6]
+# print(line_up)
+from collections import deque
+
+base_ground = deque([0, 0, 0])
+print(base_ground)
+base_ground.append(3)
+ace = base_ground.popleft()
+print(sum(base_ground), ace)
