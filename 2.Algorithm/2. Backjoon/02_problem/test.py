@@ -22,16 +22,10 @@
 # ace = base_ground.popleft()
 # print(sum(base_ground), ace)
 
-
-
-N = int(input())
-num_list = list(map(int, input().split()))
-sum_num = 0
-M = max(num_list)
-for check in range(N):
-    num_list[check] = (num_list[check]/M)*100
-    if num_list[check] > 100:
-        num_list[check] = 100
-    sum_num += num_list[check]
-ans = sum_num / N
-print(ans)
+num_list = []
+for put_in in range(9):
+    num_list.append(int(input()))
+Z = max(num_list)
+ans = num_list.index(Z)
+print(Z)
+print(ans +1)
