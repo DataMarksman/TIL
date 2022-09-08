@@ -6,6 +6,19 @@
 
 #N = int(input())
 
+def cutting(numb ,odd_count):
+    global ans
+    K = len(numb)
+    if numb == 1:
+        if int(numb) % 2 == 1:
+            odd_count += 1
+        ans += odd_count
+    elif K >= 3:
+        for i in range(1, K-2):
+            for j in range(i+1, K-1):
+                
+    elif K == 2:
+        pass
 
 string = input()
 ans = 0
