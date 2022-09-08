@@ -8,11 +8,14 @@ import sys
 
 N = int(sys.stdin.readline())
 num_list = [int(x) for x in sys.stdin.readline().split()]
-
+num_set = set(num_list)
+real_list = sorted(list(num_set))
 num_list.sort()
 count = 0
-for i in range(N-1):
-    for j in range(i+1, N):
-        if 0.9*num_list[j] <= num_list[i]:
-            count += 1
+for i in range(len(real_list)):
+    for j in range(len(real_list)):
+        if i == j and real_list[j] > 1:
+            count += (real_list[i]*(real_list[i]-1))//2
+        elif 0.9*real_list[j] <= real_list[i] and i < j:
+            count += num_list.count(real_list[i])*num_list.count(real_list[j])
 print(count)

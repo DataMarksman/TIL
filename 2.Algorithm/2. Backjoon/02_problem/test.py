@@ -22,10 +22,15 @@
 # ace = base_ground.popleft()
 # print(sum(base_ground), ace)
 
-num_list = []
-for put_in in range(9):
-    num_list.append(int(input()))
-Z = max(num_list)
-ans = num_list.index(Z)
-print(Z)
-print(ans +1)
+count_list = [0]*30
+str_list = list(input().upper())
+for checking in range(len(str_list)):
+    count_list[ord(str_list[checking])-65] += 1
+ans = 0
+Z = max(count_list)
+position = count_list.index(Z)
+if count_list.count(Z) > 1:
+    print('?')
+else:
+    print(chr(position+65))
+
