@@ -21,16 +21,29 @@
 # base_ground.append(3)
 # ace = base_ground.popleft()
 # print(sum(base_ground), ace)
+#
+# count_list = [0]*30
+# str_list = list(input().upper())
+# for checking in range(len(str_list)):
+#     count_list[ord(str_list[checking])-65] += 1
+# ans = 0
+# Z = max(count_list)
+# position = count_list.index(Z)
+# if count_list.count(Z) > 1:
+#     print('?')
+# else:
+#     print(chr(position+65))
+#
+# N, M = tuple(map(int, input().split()))
+# num_list = list(map(int, input().split()))
+# ans_list = []
+# for i in range(N-2):
+#     for j in range(i+1, N-1):
+#         for k in range(j+1, N):
+#              ans_list.append((num_list[i] + num_list[j] + num_list[k])-M)
+#
+#
 
-count_list = [0]*30
-str_list = list(input().upper())
-for checking in range(len(str_list)):
-    count_list[ord(str_list[checking])-65] += 1
-ans = 0
-Z = max(count_list)
-position = count_list.index(Z)
-if count_list.count(Z) > 1:
-    print('?')
-else:
-    print(chr(position+65))
-
+N = int(input())
+for printing in range(1,10):
+    print(f'{N} * {printing} = {N*printing}')
