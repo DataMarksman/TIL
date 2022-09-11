@@ -44,6 +44,6 @@
 #
 #
 
-N = int(input())
-for printing in range(1,10):
-    print(f'{N} * {printing} = {N*printing}')
+num_list = list(int(input()) for _ in range(9))
+print(max(num_list))
+print(num_list.index(max(num_list))+1)
