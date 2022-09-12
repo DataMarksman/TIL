@@ -1,8 +1,12 @@
-# BOJ.
-# 설계 의도: 조건에 맞는 실행
+# BOJ. 14890 경사로
+# 설계 의도: 인덱스 컨트롤
+# 1. 그냥 뒤에꺼가 더 높으면 뒤로 K칸을 계단으로 만들고 이 좌표를 stair_set에 넣음.
+# 2. 뒤에가 더 낮으면, 현재 위치로부터 뒤의 K칸의 좌표를 stair_set에 넣음.
+# 3. 만약 넣은 좌표가 이미 set에 있거나 범위를 넘어가면 False 반환.
+# 4. 끝까지 True 남아있는 개수 반환
 # 개선점:
-# import sys
-# sys.setrecursionlimit(10**6)
+import sys
+sys.setrecursionlimit(10**6)
 def check(r, platform):
     flag = True
     stair_set = set()
@@ -37,7 +41,7 @@ def check(r, platform):
 N, K = tuple(map(int, input().split()))
 board = []
 for put_in in range(N):
-    board.append([list(map(int, input().split()))])
+    board.append(list(map(int, input().split())))
 re_board = list(map(list, zip(*board)))
 
 ans = 0

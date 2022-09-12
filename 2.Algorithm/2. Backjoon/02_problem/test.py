@@ -43,7 +43,10 @@
 #              ans_list.append((num_list[i] + num_list[j] + num_list[k])-M)
 #
 #
+#
+# num_list = list(int(input()) for _ in range(9))
+# print(max(num_list))
+# print(num_list.index(max(num_list))+1)
 
-num_list = list(int(input()) for _ in range(9))
-print(max(num_list))
-print(num_list.index(max(num_list))+1)
+num_list = list(map(int, input().split()))
+print(min(num_list[0], num_list[1], (num_list[2]-num_list[0]), (num_list[3]-num_list[1])))

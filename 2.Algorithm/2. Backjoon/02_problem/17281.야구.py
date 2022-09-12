@@ -13,7 +13,7 @@ def team_making(arr, depth):
         game(line_up, 0)
 
     else:
-        for put_in in range(1,9):
+        for put_in in range(1, 9):
             if put_in not in arr:
                 arr.append(put_in)
                 team_making(arr, depth + 1)
@@ -22,7 +22,9 @@ def team_making(arr, depth):
 
 def game(players, score):
     global max_score
-    base_ground = deque([0, 0, 0])
+    base_1 = 0
+    base_2 = 0
+    base_3 = 0
     out_count = 0
     ining = 0
     n = 0
@@ -30,27 +32,53 @@ def game(players, score):
         if player_list[ining][players[n]] == 0:
             out_count += 1
             if out_count == 3:
-                base_ground = deque([0, 0, 0])
+                base_1 = 0
+                base_2 = 0
+                base_3 = 0
                 ining += 1
                 out_count = 0
         elif player_list[ining][players[n]] == 1:
-            base_ground.append(1)
-            ace = base_ground.popleft()
-            if ace == 1:
+            if base_3 == 1:
                 score += 1
+                base_3 = 0
+            if base_2 == 1:
+                base_3 = 1
+            if base_1 == 1:
+                base_2 = 1
+            base_1 = 1
+
         elif player_list[ining][players[n]] == 2:
-            base_ground.append(1)
-            base_ground.append(0)
-            for check in range(2):
-                ace = base_ground.popleft()
-                if ace == 1:
-                    score += 1
+            if base_3 == 1:
+                score += 1
+                base_3 = 0
+            if base_2 == 1:
+                score += 1
+            if base_1 == 1:
+                base_3 = 1
+            base_1 = 0
+            base_2 = 1
+
         elif player_list[ining][players[n]] == 3:
-            score += sum(base_ground)
-            base_ground = deque([1, 0, 0])
+            if base_3 == 1:
+                score += 1
+            if base_2 == 1:
+                base_2 = 0
+                score += 1
+            if base_1 == 1:
+                base_1 = 0
+                score += 1
+            base_3 = 1
         elif player_list[ining][players[n]] == 4:
-            score += sum(base_ground) + 1
-            base_ground = deque([0, 0, 0])
+            if base_3 == 1:
+                score += 1
+            if base_2 == 1:
+                score += 1
+            if base_1 == 1:
+                score += 1
+            score += 1
+            base_1 = 0
+            base_2 = 0
+            base_3 = 0
         n += 1
         if n == 9:
             n = 0
