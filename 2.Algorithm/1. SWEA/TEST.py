@@ -64,7 +64,24 @@ print(list_A[0:2][2])
 # if 1 in range(K-4, K+4):
 #     print(range(K-4, K+4))
 #     print('hi')
-num_list = [7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7]
-A = 7
-ans = int(str(A)*num_list[A])
-print(ans)
+def pre_order(N):
+    global ans_list
+    if N:
+        ans_list.append(N)
+        pre_order(ch_1[N])
+        pre_order(ch_2[N])
+
+
+N = int(input())
+tree_list = list(map(int, input().split()))
+ch_1 = [0] * (N+1)
+ch_2 = [0] * (N+1)
+ans_list = []
+
+for checking in range(N-1):
+    if ch_1[tree_list[checking*2]] == 0:
+        ch_1[tree_list[checking*2]] = tree_list[(checking*2) + 1]
+    else:
+        ch_2[tree_list[checking*2]] = tree_list[(checking*2) + 1]
+pre_order(1)
+print(ans_list)
