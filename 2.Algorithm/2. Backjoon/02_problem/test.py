@@ -48,5 +48,9 @@
 # print(max(num_list))
 # print(num_list.index(max(num_list))+1)
 
-num_list = list(map(int, input().split()))
-print(min(num_list[0], num_list[1], (num_list[2]-num_list[0]), (num_list[3]-num_list[1])))
+print("""         ,r'"7
+r`-_   ,'  ,/
+ \. ". L_r'
+   `~\/
+      |
+      |""")

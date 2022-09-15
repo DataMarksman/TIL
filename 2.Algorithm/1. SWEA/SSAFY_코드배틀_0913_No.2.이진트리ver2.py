@@ -43,7 +43,6 @@ for tc in range(1, T+1):
     if D >= 1:
         if B[3] == '1':
             LR = 1
-    # print(A, B, C ,D)
     if D == 0:
         ans = C
     else:
