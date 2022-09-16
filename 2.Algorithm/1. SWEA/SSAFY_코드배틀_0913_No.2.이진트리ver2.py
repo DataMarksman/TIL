@@ -30,6 +30,7 @@
 #
 
 T = int(input())
+ans_list = []
 for tc in range(1, T+1):
     N, V = tuple(map(int, input().split()))
     LR = 0
@@ -47,7 +48,10 @@ for tc in range(1, T+1):
         ans = C
     else:
         ans = C + D + LR - 1
-    print(f'#{tc} {ans}')
+    ans_list.append([f'#{tc} {ans}'])
+else:
+    for t in range(len(ans_list)):
+        print(*ans_list[t])
 
 
 """
