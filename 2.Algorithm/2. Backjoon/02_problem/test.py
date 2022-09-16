@@ -48,9 +48,9 @@
 # print(max(num_list))
 # print(num_list.index(max(num_list))+1)
 
-print("""         ,r'"7
-r`-_   ,'  ,/
- \. ". L_r'
-   `~\/
-      |
-      |""")
+A, B = map(int, input().split())
+B += int(input())
+C = B // 60
+B = B % 60
+A = (A + C) % 24
+print(A, B)
