@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">  <title>Document</title>
+</head>
+<body>
+  <div class="container">
+    {% comment %} 유저가 인증 유저인 경우에만 렌더링 될 수 있도록 if 태그 안에서 분기 {% endcomment %}
+    {% if user.is_authenticated %}
+      {% comment %} settings.py의 TEMPATES 변수 안에 context processors 안에 django.contrib.auth.context_processors.auth 얘가 User 알려줌  {% endcomment %}
+      {% comment %} User 클래스 인스턴스 (로그인 된 경우), Anonymous 클래스 인스턴스 (로그인 안된경우) 가 템플릿 변수 {{ user }}에 저장됨{% endcomment %}
+      <h3>Hello, {{ user }}</h3>
+      <a href="{% url 'accounts:update' %}">회원정보수정</a>
+      {% comment %} 수정 폼은 POST로 하되, {% csrf_token %}을 꼭 달아줘야함. {% endcomment %}
+      <form action="{% url 'accounts:logout' %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Logout">
+      </form>
+      <form action="{% url 'accounts:delete' %}" method="POST">
+        {% comment %} 단순히 삭제만 하는 버튼일지라도 POST요청 및 {% csrf_token %}을 사용해야함 (데이터베이스 유저테이블에 변경을 가하니까) {% endcomment %}
+        {% csrf_token %}
+        {% comment %} form태그 안에서 버튼과 동일하게 동작 {% endcomment %}
+        <input type="submit" value="회원탈퇴"> 
+      </form>
+    {% else %}
+    {% comment %} 만약 로그인되지 않은 유저라면 로그인 혹은 회원가입을 하도록 유도 {% endcomment %}
+      <a href="{% url 'accounts:login' %}">Login</a>
+      <a href="{% url 'accounts:signup' %}">Signup</a>
+    {% endif %}
+    <hr>
+
+    {% block content %}
+      {% comment %} 이곳에 상속받는 템플릿들의 내용이 들어가게 됩니다. {% endcomment %}
+    {% endblock content %}
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script></body>
+</html>
