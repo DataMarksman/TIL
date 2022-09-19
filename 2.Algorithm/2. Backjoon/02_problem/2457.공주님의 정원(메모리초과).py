@@ -30,7 +30,7 @@ def flowering(arr):
 
 # 결국 275일동안 피어있으면 되는건데...
 month_count = [31,28,31,30,31,30,31,31,30,31,30,31]
-flower_list = []
+flower_list = [[] for _ in range(367)]
 N = int(input())
 for case_num in range(1, N+1):
     line = list(map(int, input().split()))
