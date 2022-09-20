@@ -47,10 +47,62 @@
 # num_list = list(int(input()) for _ in range(9))
 # print(max(num_list))
 # print(num_list.index(max(num_list))+1)
+#
+# A, B = map(int, input().split())
+# B += int(input())
+# C = B // 60
+# B = B % 60
+# A = (A + C) % 24
+# print(A, B)
 
-A, B = map(int, input().split())
-B += int(input())
-C = B // 60
-B = B % 60
-A = (A + C) % 24
-print(A, B)
+
+# T = int(input())
+# for tc in range(1, T+1):
+#     P = input()
+#     ans = []
+#     for checking in range(len(P)//7):
+#         ans.append(int(P[checking*7:(checking*7)+7], 2))
+#     print(*ans)
+
+# T = int(input())
+# for tc in range(1, T+1):
+#     P = input()
+#     D = ''
+#     ans = []
+#     for check in range(len(P)):
+#         C = '0000'
+#         C += bin(int(P[check], 16))[2:]
+#         D += C[len(C)-4:len(C)]
+#     for checking in range(len(D) // 7 + 1):
+#         ans.append(int(D[checking*7:(checking*7)+7], 2))
+#     print(*ans)
+ans_dict = {'001101': 0, '010011': 1, '111011': 2, '110001': 3,
+            '100011': 4, '110111': 5, '001011': 6, '111101': 7,
+            '011001': 8, '101111': 9, }
+
+
+T = int(input())
+for tc in range(1, T+1):
+    P = input()
+    D = ''
+    ans = []
+    for check in range(len(P)):
+        C = '0000'
+        C += bin(int(P[check], 16))[2:]
+        D += C[len(C)-4:len(C)]
+    idx = 0
+    while True:
+        if D[idx:idx+6] in ans_dict:
+            break
+        else:
+            idx += 1
+    for checking in range((len(D) - idx) // 6):
+        ans.append(ans_dict[(D[idx:][checking*6:(checking*6)+6])])
+    print(*ans)
+
+
+"""
+2
+0DEC
+0269FAC9A0
+"""
