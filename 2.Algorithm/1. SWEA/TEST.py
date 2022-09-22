@@ -85,12 +85,71 @@ print(list_A[0:2][2])
 #         ch_2[tree_list[checking*2]] = tree_list[(checking*2) + 1]
 # pre_order(1)
 # print(ans_list)
+# byte_mask = [1, 2, 4, 8, 16, 32, 64, 128, 256]
+
+# T = int(input())
+#
+# for _ in range(T):
+#     arr = input()
+#     binary = []
+#     ans = []
+#
+#     while arr:
+#         binary = int(arr[:7], 2)
+#         decimal = 0
+#         print(binary)
+#         for i in range(7):
+#             if binary & (1 << i):
+#                 print(binary, i, 1 << i)
+#                 decimal += 2 ** i
+#         else:
+#             ans.append(decimal)
+#
+#         arr = arr[7:]
+#     print(ans)
+#
+# """
+# 2
+# 00000010001101
+# 0000000111100000011000000111100110000110000111100111100111111001100111
+#
+# """
+
+
+# T = int(input())
+# for tc in range(1, T+1):
+#     N, string = input().split()
+#     ans = ''
+#     for changing in range(int(N)):
+#         A = '0000'
+#         A += bin(int(string[changing], 16))[2:]
+#         ans += A[len(A)-4:]
+#     print(f'#{tc} {ans}')
+
+
+T = int(input())
+for tc in range(1, T+1):
+    N = float(input())
+    count = 1
+    ans = ''
+    flag = True
+    while N > 0 and flag:
+        if count >= 13:
+            flag = False
+            break
+        if N >= (1/2)**count:
+            N -= (1/2)**count
+            ans += '1'
+        else:
+            ans += '0'
+        count += 1
+    if flag:
+        print(f'#{tc} {ans}')
+    else:
+        print(f'#{tc} overflow')
 
 
 
-
-print(3//2)
-print((-3 //2)*(-1))
 
 
 
