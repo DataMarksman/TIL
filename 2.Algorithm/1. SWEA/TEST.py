@@ -125,32 +125,35 @@ print(list_A[0:2][2])
 #         A += bin(int(string[changing], 16))[2:]
 #         ans += A[len(A)-4:]
 #     print(f'#{tc} {ans}')
+#
+#
+# T = int(input())
+# for tc in range(1, T+1):
+#     N = float(input())
+#     count = 1
+#     ans = ''
+#     flag = True
+#     while N > 0 and flag:
+#         if count >= 13:
+#             flag = False
+#             break
+#         if N >= (1/2)**count:
+#             N -= (1/2)**count
+#             ans += '1'
+#         else:
+#             ans += '0'
+#         count += 1
+#     if flag:
+#         print(f'#{tc} {ans}')
+#     else:
+#         print(f'#{tc} overflow')
+#
+#
+#
 
-
-T = int(input())
-for tc in range(1, T+1):
-    N = float(input())
-    count = 1
-    ans = ''
-    flag = True
-    while N > 0 and flag:
-        if count >= 13:
-            flag = False
-            break
-        if N >= (1/2)**count:
-            N -= (1/2)**count
-            ans += '1'
-        else:
-            ans += '0'
-        count += 1
-    if flag:
-        print(f'#{tc} {ans}')
-    else:
-        print(f'#{tc} overflow')
-
-
-
-
+list_A = [1, 2, 3, 4, 5, 6, 8]
+for i in range(len(list_A)-2):
+    print(sum(list_A[i:i+3]))
 
 
 
