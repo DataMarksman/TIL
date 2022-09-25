@@ -4,6 +4,8 @@
 # import sys
 # sys.setrecursionlimit(10**6)
 
+alp_num = ['', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M']
+
 N = int(input())
 num_list = list(map(int, input().split()))
 

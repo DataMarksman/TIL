@@ -112,7 +112,15 @@
 # for i in range(13):
 #     ans_list.append(sum(month_count[:i]))
 # print(ans_list)
-
-
-A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
-print(B)
+list_A = [0]*7
+A, B, C = map(int, input().split())
+list_A[A] += 1
+list_A[B] += 1
+list_A[C] += 1
+Max_count = max(list_A)
+if Max_count == 3:
+    print(10000 + A*1000)
+elif Max_count == 2:
+    print(1000 + list_A.index(Max_count) * 100)
+else:
+    print(max(A, B, C)*100)

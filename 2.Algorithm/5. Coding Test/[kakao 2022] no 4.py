@@ -41,4 +41,4 @@ def solution(numbers):
         print('check_list:', check_list)
         print('result_list:', result_list)
 """
-print(solution([8, 100000, 102, 1]))
+print(solution([8, 100000, 102, 1, 2, 3]))
