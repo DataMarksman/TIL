@@ -1,30 +1,41 @@
-# BOJ.
-# 설계 의도: 조건에 맞는 실행
+# BOJ. 2263 트리의 순회
+# 설계 의도:
+# 1. 중위 순회 리스트가 값 빼오는 본체
+# 2. 후위 순회 리스트의 동일 범위 내 가장 끝 값이 해당 줒위 순회 서브 노드의 루트 노드.
+# 3. 한번만 서칭해서 가져오기 위해서 position 리스트 만들고 in_list의 값들이 어디 있는지 idx와 역매칭
+# 4. 시간 촉박, 메모리 촉박...
 # 개선점:
-# import sys
-# sys.setrecursionlimit(10**6)
-def reorder(k):
-    if k <= N:
-        reorder(k*2)
-        re_list[k] = in_list.pop(0)
-        reorder(k*2 + 1)
+# 겨우 통과해서, 시간도 메모리도 개선해야 할 곳이 한가득
+import sys
+sys.setrecursionlimit(10**5)
 
 
-def preorder(t):
-    if t <= N:
-        ans.append(re_list[t])
-        preorder(t*2)
-        preorder(t*2 + 1)
+def preorder(start, end, count):
+    if end > start:
+        pick = post_list[end-count]
+        idx = position[pick]
+        ans.append(pick)
+        if start < idx-1:
+            preorder(start, idx-1, count)
+        elif start == idx-1:
+            ans.append(post_list[start - count])
+        if idx + 1 < end:
+            preorder(idx+1, end, count + 1)
+        elif idx + 1 == end:
+            ans.append(post_list[end - count - 1])
+    elif end == start:
+        ans.append(post_list[end-count])
 
 
-N = int(input())
-in_list = list(map(int, input().split()))
-post_list = list(map(int, input().split()))
-re_list = [0]*(N+1)
+N = int(sys.stdin.readline())
+in_list = list(map(int, sys.stdin.readline().split()))
+post_list = list(map(int, sys.stdin.readline().split()))
+position = [0]*(N+1)
+for positioning in range(N):
+    position[in_list[positioning]] = positioning
 ans = []
-reorder(1)
-print(*re_list)
-preorder(1)
+
+preorder(0, N-1, 0)
 print(*ans)
 
 

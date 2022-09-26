@@ -1,7 +1,8 @@
 # BOJ.
 # 설계 의도: 조건에 맞는 실행
 # 개선점:
-# 1.
+# 1. 분명 쉬운 문제였는데, 후진 조건에서 사방의 벽만 생각하고, 중간 벽을 고려하지 않았다.
+
 D_trans = [0, 3, 2, 1]
 dx = [-1, 0, 1, 0]
 dy = [0, -1, 0, 1]
@@ -12,12 +13,7 @@ D = D_trans[D]
 num_list = [list(map(int, input().split())) for _ in range(N)]
 count = 0
 num_list[X][Y] = 0
-for walling in range(N):
-    num_list[walling][0] = 1
-    num_list[walling][M-1] = 1
-for walling_2 in range(M):
-    num_list[0][walling_2] = 1
-    num_list[N-1][walling_2] = 1
+
 while True:
     if num_list[X][Y] == 0:
         num_list[X][Y] = 2
@@ -25,7 +21,7 @@ while True:
     for direction in range(1, 5):
         PX = X + dx[(D + direction) % 4]
         PY = Y + dy[(D + direction) % 4]
-        if 0 <= PX < N and 0 <= PY < M:
+        if 0 < PX < N-1 and 0 < PY < M-1:
             if num_list[PX][PY] == 0:
                 X = int(PX)
                 Y = int(PY)
@@ -34,12 +30,7 @@ while True:
     else:
         PX = X - dx[D]
         PY = Y - dy[D]
-        # if PX == 0 or PX == N-1 or PY == 0 or PY == M-1:
-        #     break
-        # else:
-        #     X = int(PX)
-        #     Y = int(PY)
-        if 0 < PX < N-1 and 0 < PY < M-1:
+        if 0 < PX < N-1 and 0 < PY < M-1 and num_list[PX][PY] != 1:
             X = int(PX)
             Y = int(PY)
         else:
