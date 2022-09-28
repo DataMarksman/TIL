@@ -3,12 +3,21 @@
 # 개선점:
 # import sys
 # sys.setrecursionlimit(10**6)
+def pulling(k):
+    global ans_set
+    if 0 < k < MAX:
+        ans_set.add(k)
+    if 0 <= k < MAX:
+        pulling(k + A)
+        pulling(k + B)
 
-N = int(input())
-num_list = list(map(int, input().split()))
 
-N = int(input())
-for case_num in range(1,N+1):
-
-    T = int(input())
-    for case_num in range(1, T + 1):
+ans_set = set()
+A, B, C = map(int, input().split())
+A = int(A)
+B = int(B)
+MAX = int(C)
+ans_set.add(MAX)
+pulling(0)
+ans_list = sorted(list(ans_set))
+print(*ans_list)

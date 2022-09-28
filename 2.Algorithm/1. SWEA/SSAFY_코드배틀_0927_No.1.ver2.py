@@ -9,17 +9,47 @@ for tc in range(1, T+1):
     ans_set = set()
     for c in range(height):
         lines = list(input())
-        for r in range(wide):
-            if lines[r] == 'R':
-                R_list.append((c, r))
-            elif lines[r] == 'G':
-                G_list.append((c, r))
-            elif lines[r] == 'B':
-                B_list.append((c, r))
+        if c == 0 or c == height-1:
+            for r in range(wide):
+                if lines[r] == 'R':
+                    R_list.append((c, r))
+                elif lines[r] == 'G':
+                    G_list.append((c, r))
+                else:
+                    B_list.append((c, r))
+        else:
+            hold_r = 0
+            hold_g = 0
+            hold_b = 0
+            for r in range(wide):
+                if lines[r] == 'R' and not hold_r:
+                    R_list.append((c, r))
+                    if r != height-1:
+                        hold_r = r+1
+                elif lines[r] == 'G' and not hold_g:
+                    G_list.append((c, r))
+                    if r != height-1:
+                        hold_g = r+1
+                elif lines[r] == 'B' and not hold_b:
+                    B_list.append((c, r))
+                    if r != height-1:
+                        hold_b = r+1
+            for back_r in range(wide-1, -1, -1):
+                if hold_r + hold_g + hold_b == 0:
+                    break
+                else:
+                    if lines[back_r] == 'R' and hold_r:
+                        R_list.append((c, back_r))
+                        hold_r = 0
+                    elif lines[back_r] == 'G' and hold_g:
+                        G_list.append((c, back_r))
+                        hold_g = 0
+                    elif lines[back_r] == 'B' and hold_b:
+                        B_list.append((c, back_r))
+                        hold_b = 0
+
     for R in range(len(R_list)):
         for G in range(len(G_list)):
-            max_wide = 0
-            max_triangle = 0
             for B in range(len(B_list)):
                 R1, R2 = R_list[R][0], R_list[R][1]
                 G1, G2 = G_list[G][0], G_list[G][1]
@@ -27,110 +57,36 @@ for tc in range(1, T+1):
                 if (R2-G2)*(R2-B2) != 0:
                     if abs((R1-G1)/(R2-G2)) != abs((R1-B1)/(R2-B2)):
                         tri_wide = abs((R1*G2 + G1*B2 + B1*R2)-(R1*B2 + G1*R2 + B1*G2))/2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R, G, B)
+                        ans_set.add((tri_wide, R, G, B))
 
                 elif (R2-G2)*(G2-B2) != 0:
                     if abs((R1-G1)/(R2-G2)) != abs((G1-B1)/(G2-B2)):
                         tri_wide = abs((R1*G2 + G1*B2 + B1*R2)-(R1*B2 + G1*R2 + B1*G2))/2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R, G, B)
+                        ans_set.add((tri_wide, R, G, B))
 
                 elif (B2-G2)*(R2-B2) != 0:
                     if abs((B1-G1)/(B2-G2)) != abs((R1-B1)/(R2-B2)):
                         tri_wide = abs((R1*G2 + G1*B2 + B1*R2)-(R1*B2 + G1*R2 + B1*G2))/2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R, G, B)
-            if max_wide > 0:
-                ans_set.add(max_triangle)
-
-    for R_2 in range(len(R_list)):
-        for B_2 in range(len(B_list)):
-            max_wide = 0
-            max_triangle = 0
-            for G_2 in range(len(G_list)):
-                R1, R2 = R_list[R_2][0], R_list[R_2][1]
-                G1, G2 = G_list[G_2][0], G_list[G_2][1]
-                B1, B2 = B_list[B_2][0], B_list[B_2][1]
-                if (R2 - G2) * (R2 - B2) != 0:
-                    if abs((R1 - G1) / (R2 - G2)) != abs((R1 - B1) / (R2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_2, G_2, B_2)
-
-                elif (R2 - G2) * (G2 - B2) != 0:
-                    if abs((R1 - G1) / (R2 - G2)) != abs((G1 - B1) / (G2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_2, G_2, B_2)
-
-                elif (B2 - G2) * (R2 - B2) != 0:
-                    if abs((B1 - G1) / (B2 - G2)) != abs((R1 - B1) / (R2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_2, G_2, B_2)
-            if max_wide > 0:
-                ans_set.add(max_triangle)
-
-    for G_3 in range(len(G_list)):
-        for B_3 in range(len(B_list)):
-            max_wide = 0
-            max_triangle = 0
-            for R_3 in range(len(R_list)):
-                R1, R2 = R_list[R_3][0], R_list[R_3][1]
-                G1, G2 = G_list[G_3][0], G_list[G_3][1]
-                B1, B2 = B_list[B_3][0], B_list[B_3][1]
-                if (R2 - G2) * (R2 - B2) != 0:
-                    if abs((R1 - G1) / (R2 - G2)) != abs((R1 - B1) / (R2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_3, G_3, B_3)
-
-                elif (R2 - G2) * (G2 - B2) != 0:
-                    if abs((R1 - G1) / (R2 - G2)) != abs((G1 - B1) / (G2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_3, G_3, B_3)
-
-                elif (B2 - G2) * (R2 - B2) != 0:
-                    if abs((B1 - G1) / (B2 - G2)) != abs((R1 - B1) / (R2 - B2)):
-                        tri_wide = abs((R1 * G2 + G1 * B2 + B1 * R2) - (R1 * B2 + G1 * R2 + B1 * G2)) / 2
-                        if tri_wide > max_wide:
-                            max_wide = float(tri_wide)
-                            max_triangle = (max_wide, R_3, G_3, B_3)
-            if max_wide > 0:
-                ans_set.add(max_triangle)
+                        ans_set.add((tri_wide, R, G, B))
 
     count_list = []
     ans_list = sorted(list(ans_set), reverse=True)
-    while ans_list:
-        ans_list.sort(reverse=True)
-        pick = list(ans_list.pop(0))
-        if pick[0] == 0:
-            pass
+    for re_c in range(len(ans_list)):
+        for comp in range(re_c):
+            if ans_list[comp][1] == ans_list[re_c][1] and ans_list[comp][2] == ans_list[re_c][2]\
+                    and ans_list[comp][0] > ans_list[re_c][0]:
+                break
+            elif ans_list[comp][2] == ans_list[re_c][2] and ans_list[comp][3] == ans_list[re_c][3]\
+                    and ans_list[comp][0] > ans_list[re_c][0]:
+                break
+            elif ans_list[comp][1] == ans_list[re_c][1] and ans_list[comp][3] == ans_list[re_c][3]\
+                    and ans_list[comp][0] > ans_list[re_c][0]:
+                break
         else:
-            for checking in range(len(ans_list)):
-                if ans_list[checking][0] == 0:
-                    break
-                else:
-                    if pick[1] == ans_list[checking][1] and pick[2] == ans_list[checking][2] \
-                            and pick[0] >= ans_list[checking][0]:
-                        ans_list[checking] = (0, 0, 0, 0)
-                    elif pick[1] == ans_list[checking][1] and pick[3] == ans_list[checking][3] \
-                            and pick[0] >= ans_list[checking][0]:
-                        ans_list[checking] = (0, 0, 0, 0)
-                    elif pick[2] == ans_list[checking][2] and pick[3] == ans_list[checking][3] \
-                            and pick[0] >= ans_list[checking][0]:
-                        ans_list[checking] = (0, 0, 0, 0)
-            count_list.append(pick)
+            count_list.append(ans_list[re_c])
+    print(R_list)
+    print(G_list)
+    print(B_list)
     print(count_list)
     print(f'#{tc} {len(count_list)}')
 """
@@ -151,6 +107,36 @@ for tc in range(1, T+1):
 [3.0, 12, 0, 0], [3.0, 10, 1, 1], [3.0, 4, 1, 4], [3.0, 1, 3, 5], 
 [2.5, 11, 2, 0], [2.5, 3, 1, 5], [2.0, 1, 2, 1], [0.5, 1, 1, 0]]
 #4 20
+
+5
+2 2
+RR
+GB
+2 3
+RGB
+BGR
+4 4
+RRRR
+RRRR
+BBBB
+BBBB
+5 5
+RRRRR
+GGBBB
+RRRRR
+BBBGG
+RRRRR
+10 10
+RGBRGBRGBB
+RGBRGBRGBR
+RBGBRBGBRB
+GBGGRRBGBG
+RBGBRGBGRG
+BGRGBGRGBG
+RGBGBGBRRR
+BGBRBGBGRB
+RGBGBBGGRG
+BGRGBGRGBG
 
 
 """
