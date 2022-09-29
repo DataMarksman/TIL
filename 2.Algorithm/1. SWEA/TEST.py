@@ -149,12 +149,10 @@ print(list_A[0:2][2])
 #         print(f'#{tc} overflow')
 #
 #
+# #
 #
-
-list_A = [1, 2, 3, 4, 5, 6, 8]
-for i in range(len(list_A)-2):
-    print(sum(list_A[i:i+3]))
-
-
+# list_A = [1, 2, 3, 4, 5, 6, 8]
+# for i in range(len(list_A)-2):
+#     print(sum(list_A[i:i+3]))
 
 

@@ -22,6 +22,7 @@ while leaf_set:
         survive = island_sum[idx]
     else:
         survive = 0
+    pre_idx = set()
     while idx > 1:
         idx = island_up[idx]
         if island_sum[idx] != 0:
@@ -29,11 +30,19 @@ while leaf_set:
                 if survive + island_sum[idx] >= 0:
                     survive += island_sum[idx]
                     island_sum[idx] = 0
+                    pre_idx.add(idx)
                 else:
                     island_sum[idx] += survive
                     survive = 0
+                    while pre_idx:
+                        pick = pre_idx.pop()
+                        island_up[pick] = idx
             else:
                 survive += island_sum[idx]
                 island_sum[idx] = 0
+                pre_idx.add(idx)
+    while pre_idx:
+        pick = pre_idx.pop()
+        island_up[pick] = 1
     ans += survive
 print(ans)

@@ -16,9 +16,7 @@
 #         A = lines[0]
 #         B = lines[1]
 
-T = int(input())
-for tc in range(1, T + 1):
-    N, M = tuple(map(int, input().split()))
-    for erase in range(M):
-        line = tuple(map(int, input().split()))
-    print(N - 1)
+
+for tc in range(1, int(input()) + 1):
+    N, M = map(int, input().split())
+    print(f'{"" if [map(int, input().split()) for _ in range(M)] else ""}{N - 1}')

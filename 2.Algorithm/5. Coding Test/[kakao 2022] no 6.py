@@ -37,7 +37,6 @@ def solution(n, m, x, y, r, c, k):
                     if 0 <= PX < n and 0 <= PY < m and (PX, PY) not in visited_set[top]:
                         dfs((PX, PY), words + alpha[direction], top + 1)
                         visited_set[top].add((PX, PY))
-
     dfs(start, '', 0)
     if ans_string:
         answer = ans_string
