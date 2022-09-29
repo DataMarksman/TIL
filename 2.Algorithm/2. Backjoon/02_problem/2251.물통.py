@@ -17,7 +17,7 @@ A, B, C = map(int, input().split())
 A = int(A)
 B = int(B)
 MAX = int(C)
-ans_set.add(MAX)
+
 pulling(0)
 ans_list = sorted(list(ans_set))
 print(*ans_list)

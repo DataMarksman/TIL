@@ -112,15 +112,44 @@
 # for i in range(13):
 #     ans_list.append(sum(month_count[:i]))
 # print(ans_list)
-list_A = [0]*7
-A, B, C = map(int, input().split())
-list_A[A] += 1
-list_A[B] += 1
-list_A[C] += 1
-Max_count = max(list_A)
-if Max_count == 3:
-    print(10000 + A*1000)
-elif Max_count == 2:
-    print(1000 + list_A.index(Max_count) * 100)
-else:
-    print(max(A, B, C)*100)
+# list_A = [0]*7
+# A, B, C = map(int, input().split())
+# list_A[A] += 1
+# list_A[B] += 1
+# list_A[C] += 1
+# Max_count = max(list_A)
+# if Max_count == 3:
+#     print(10000 + A*1000)
+# elif Max_count == 2:
+#     print(1000 + list_A.index(Max_count) * 100)
+# else:
+#     print(max(A, B, C)*100)
+
+
+#
+# N = int(input())
+# print((N+1)*N//2)
+
+
+
+# T = int(input())
+# for tc in range(1, T+1):
+#     num_list = list(map(int, input().split()))
+#     A = sum(num_list[1:])/num_list[0]
+#     B = num_list[0]
+#     count = 0
+#     for checking in range(1, len(num_list)):
+#         if num_list[checking] > A:
+#             count += 1
+#     print(f'{count/B*100: .3f)}%')
+
+
+
+
+
+
+
+
+
+
+

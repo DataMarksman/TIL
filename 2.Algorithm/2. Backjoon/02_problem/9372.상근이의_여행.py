@@ -15,8 +15,9 @@
 #         lines = tuple(map(int, input().split()))
 #         A = lines[0]
 #         B = lines[1]
-
-
-for tc in range(1, int(input()) + 1):
-    N, M = map(int, input().split())
-    print(f'{"" if [map(int, input().split()) for _ in range(M)] else ""}{N - 1}')
+import sys
+for tc in range(1, int(sys.stdin.readline()) + 1):
+    N, M = map(int, sys.stdin.readline().split())
+    for A in range(M):
+        map(int, sys.stdin.readline().split())
+    print(N - 1)
