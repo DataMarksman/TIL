@@ -146,8 +146,9 @@
 
 
 
-
-
+queue = {(2, 6), (1, 12), (5, 12), (8, 1), (10, 1), }
+queue.discard(min((queue)))
+print(min((queue)))
 
 
 

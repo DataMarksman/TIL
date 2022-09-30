@@ -11,29 +11,31 @@ N = int(sys.stdin.readline())
 case_num = 1
 while N != 0:
     board = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
-    INF = 140626
-    value_list = [INF] * (N**2)
-    value_list[0] = board[0][0]
     visited = set()
-    current_value = 0
+    min_set = set()
     flag = True
+    pick = (board[0][0], 0)
+    ans = 0
+    if N == 1:
+        ans = board[0][0]
+        flag = False
     while flag:
-        pick = value_list.index(min(value_list))
-        x = pick // N
-        y = pick % N
-        current_value = value_list[pick]
-        value_list[pick] = INF
-        visited.add(pick)
+        x = pick[1] // N
+        y = pick[1] % N
+        current_value = pick[0]
+        visited.add(pick[1])
         for direction in range(4):
             px = x + dx[direction]
             py = y + dy[direction]
             if px == N-1 and py == N-1:
-                value_list[px * N + py] = board[px][py] + current_value
+                ans = board[px][py] + current_value
                 flag = False
                 break
             elif 0 <= px < N and 0 <= py < N and (N*px + py) not in visited:
-                if board[px][py] + current_value < value_list[px*N + py]:
-                    value_list[px * N + py] = board[px][py] + current_value
-    print(f'Problem {case_num}: {value_list[N*N - 1]}')
+                min_set.add((board[px][py] + current_value, px * N + py))
+        while pick[1] in visited and min_set:
+            pick = min(min_set)
+            min_set.discard(min(min_set))
+    print(f'Problem {case_num}: {ans}')
     N = int(sys.stdin.readline())
     case_num += 1

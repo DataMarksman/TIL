@@ -29,6 +29,7 @@ for case_num in range(1, T + 1):
     print(f'#{case_num} {len(ans_set)}')
 
 """
+
 3
 5 2
 1 2 3 4
@@ -38,3 +39,5 @@ for case_num in range(1, T + 1):
 2 3 4 5 4 6 7 4
 
 """
+
+
