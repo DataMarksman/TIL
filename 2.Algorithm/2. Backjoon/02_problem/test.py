@@ -144,13 +144,58 @@
 #     print(f'{count/B*100: .3f)}%')
 
 
+#
+#
+# queue = {(2, 6), (1, 12), (5, 12), (8, 1), (10, 1), }
+# queue.discard(min((queue)))
+# print(min((queue)))
+#
+#
+
+# 김영록
+'''
+일반적인 다익스트라 코드에 합리적인 경로 찾는 조건만 추가시켜줬다.
+'''
+import heapq
+import sys
 
 
-queue = {(2, 6), (1, 12), (5, 12), (8, 1), (10, 1), }
-queue.discard(min((queue)))
-print(min((queue)))
+def dijkstra(start):
+    queue = []
+    heapq.heappush(queue, (0, start))
+    dist[start] = 0
+    while queue:
+        temp, current = heapq.heappop(queue)
+        if dist[current] < temp:
+            continue
+        for target, length in route[current]:
+            if dist[target] > temp + length:
+                dist[target] = temp + length
+                heapq.heappush(queue, (temp + length, target))
+            if temp > dist[target]:
+                dp[current] += dp[target]
 
 
+'''
+def reasonable_route(start):    <---- 굳이 필요가 없네..? (heapq에서 뽑아낸거에서 바로 비교해버리면 됨)
+    for target, length in route[start]:
+        pass
+    pass
+'''
 
+input = sys.stdin.readline
+INF = sys.maxsize
+N, M = map(int, input().split())
+dist = [INF] * (N + 1)
+route = [[] for _ in range(N + 1)]
+dp = [0] * (N + 1)
+for _ in range(M):
+    A, B, C = map(int, input().split())
+    route[A].append((B, C))
+    route[B].append((A, C))
+dp[2] = 1
+dijkstra(2)
+print(dp[1])
+# print(dist)
 
 
