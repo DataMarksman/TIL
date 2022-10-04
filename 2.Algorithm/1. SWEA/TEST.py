@@ -154,20 +154,28 @@ print(list_A[0:2][2])
 # list_A = [1, 2, 3, 4, 5, 6, 8]
 # for i in range(len(list_A)-2):
 #     print(sum(list_A[i:i+3]))
+#
+#
+# def setting(x, y, d, p, numbering):
+#     global board
+#     for fill_X in range(x - d, x + d + 1):
+#         for fill_Y in range(y - d, y + d + 1):
+#             Plus = (fill_X-x) + (fill_Y-y)
+#             Minus = (fill_X-x) - (fill_Y-y)
+#             if 0 <= fill_X < 10 and 0 <= fill_Y < 10 and -d <= Plus <= d and -d <= Minus <= d:
+#                 board[fill_X][fill_Y] += p
+#
+#
+# board = [[0]*10 for _ in range(10)]
+# setting(4, 4, 2, 10, 1)
+# for printing in range(10):
+#     print(board[printing])
 
+import sys
+input = sys.stdin.readline
+N = int(input().rstrip())
+for p in range(N):
+    A, B = input().split()
+    print(int(A) + int(B))
 
-def setting(x, y, d, p, numbering):
-    global board
-    for fill_X in range(x - d, x + d + 1):
-        for fill_Y in range(y - d, y + d + 1):
-            Plus = (fill_X-x) + (fill_Y-y)
-            Minus = (fill_X-x) - (fill_Y-y)
-            if 0 <= fill_X < 10 and 0 <= fill_Y < 10 and -d <= Plus <= d and -d <= Minus <= d:
-                board[fill_X][fill_Y] += p
-
-
-board = [[0]*10 for _ in range(10)]
-setting(4, 4, 2, 10, 1)
-for printing in range(10):
-    print(board[printing])
 
