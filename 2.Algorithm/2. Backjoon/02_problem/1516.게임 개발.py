@@ -1,18 +1,12 @@
-<<<<<<< HEAD
-# BOJ.
-# 설계 의도: DFS로 구현하는 위상정렬
-=======
 # BOJ. 1516. 게임 개발
 # 설계 의도: DFS 기반의 위상 정렬
 # 1. 재귀 함수를 통해, 위상 정렬을 해나가면서 값을 들고 갑니다
 # 2. 현재 값과 이미 넣어놓은 값을 비교해서 더 큰 쪽으로 통합 시킵니다.
 # 3. 하나가 끝까지 가면, 다시 처음 뽑았던 루트 노드 들 중에 하나 뽑아서 끝까지 진행
->>>>>>> 073580aabcc2df062116a4b420e6a076d6a5e684
 # 개선점:
 # 1. 자, 이건 DFS 입니다. 재귀입니다. 값 가져갈 때, 갱신 시키는건
 #     ans_list 뿐만 아니라 들고 가는 값도 갱신 시켜야 합니다.
 import sys
-<<<<<<< HEAD
 import heapq
 # sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
@@ -20,8 +14,6 @@ input = sys.stdin.readline
 
 N = int(input())
 
-
-=======
 input = sys.stdin.readline
 def dfs_topol(start, price):
     global edge_list
@@ -56,7 +48,6 @@ while stack:
     dfs_topol(pick, time_list[pick])
 for printing in range(1, N+1):
     print(ans_list[printing])
->>>>>>> 073580aabcc2df062116a4b420e6a076d6a5e684
 
 
 """
