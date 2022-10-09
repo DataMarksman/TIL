@@ -170,12 +170,22 @@ print(list_A[0:2][2])
 # setting(4, 4, 2, 10, 1)
 # for printing in range(10):
 #     print(board[printing])
+#
+# import sys
+# input = sys.stdin.readline
+# N = int(input().rstrip())
+# for p in range(N):
+#     A, B = input().split()
+#     print(int(A) + int(B))
+#
+#
 
-import sys
-input = sys.stdin.readline
-N = int(input().rstrip())
-for p in range(N):
-    A, B = input().split()
-    print(int(A) + int(B))
 
+
+A = input()
+B = input()
+if len(A) >= len(B):
+    print("go")
+else:
+    print("no")
 
