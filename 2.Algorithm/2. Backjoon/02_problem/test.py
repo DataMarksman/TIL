@@ -1,4 +1,4 @@
-
+import math
 
 # M = 8
 # batch_set = set()
@@ -112,7 +112,9 @@
 # for i in range(13):
 #     ans_list.append(sum(month_count[:i]))
 # print(ans_list)
+#
+#
+# A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
+# print(B)
 
-
-A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
-print(B)
+print(math.ceil(3.0))0
