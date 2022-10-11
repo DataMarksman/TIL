@@ -64,7 +64,7 @@ for case_num in range(1, T+1):
         line = list(map(int, input().split()))
         for check in range(N):
             if line[check] == 1:
-                if check == 0 or check == N-1 or line == 0 or line == N-1:
+                if check == 0 or check == N-1 or put_in == 0 or put_in == N-1:
                     line[check] = 2
                     visited.add((put_in, check))
                 else:

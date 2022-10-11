@@ -180,12 +180,8 @@ print(list_A[0:2][2])
 #
 #
 
+A = {1,2,3,4,5,6, }
+A = A - {1,2,3}
 
-
-A = input()
-B = input()
-if len(A) >= len(B):
-    print("go")
-else:
-    print("no")
+print(A)
 
