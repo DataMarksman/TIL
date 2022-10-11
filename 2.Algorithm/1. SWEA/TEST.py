@@ -180,8 +180,25 @@ print(list_A[0:2][2])
 #
 #
 
-A = {1,2,3,4,5,6, }
-print({7, 9} & A)
+# A = {1,2,3,4,5,6, }
+# print({7, 9} & A)
+#
+# print(A)
 
-print(A)
+
+import sys
+input = sys.stdin.readline
+T = int(input())
+for tc in range(1, T+1):
+    num_list = list(map(int, input().split()))
+    A = sum(num_list[1:])/num_list[0]
+    B = num_list[0]
+    count = 0
+    for checking in range(1, len(num_list)):
+        if num_list[checking] > A:
+            count += 1
+    ans = (count/B)*100
+    print(f'{ans:.3f}%')
+
+
 
