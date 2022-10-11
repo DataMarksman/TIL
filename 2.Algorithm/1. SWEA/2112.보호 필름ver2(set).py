@@ -9,10 +9,10 @@
 # import sys
 # sys.stdin = open("sample_input.txt", "r")
 
-from itertools import combinations
+from itertools import combinations, combinations_with_replacement
 
 
-def check_ans(discard_set, input_set):
+def check_ans(input_set, discard_set):
     if ans < 0:
         discard_set = set(discard_set)
         input_set = set(input_set)
@@ -21,21 +21,19 @@ def check_ans(discard_set, input_set):
             if flag:
                 flag = False
                 compare_set = set(check_set[rows])
-                compare_set -= discard_set
                 compare_set |= input_set
-                for numbering in range(wide-2):
-                    if {numbering, numbering+1, numbering+2} & compare_set == {numbering, numbering+1, numbering+2} or\
-                            {numbering, numbering+1, numbering+2} & compare_set == set():
+                compare_set -= discard_set
+                for numbering in range(wide-K+1):
+                    P = {p for p in range(numbering, numbering+K)}
+                    if P & compare_set == P or P & compare_set == set():
                         flag = True
                         break
             else:
                 break
+        if flag:
+            return True
         else:
-            if flag:
-                return True
-            else:
-                return False
-        return False
+            return False
     else:
         return False
 
@@ -55,12 +53,25 @@ for case_num in range(1, T + 1):
     else:
         pick_list = [i for i in range(wide)]
         for incur in range(1, wide):
-            pick_set = set(combinations(pick_list, incur))
-            while pick_set:
-                pick = list(pick_set.pop())
-                for recur in range(len(pick)):
-                    
-
+            if ans < 0:
+                pick_set = set(combinations(pick_list, incur))
+                while pick_set and ans < 0:
+                    pick = set(pick_set.pop())
+                    for recur in range(len(pick)):
+                        if ans < 0:
+                            part_set = set(combinations_with_replacement(list(pick), incur))
+                            while part_set:
+                                part1 = set(part_set.pop())
+                                part2 = pick - part1
+                                if check_ans(part1, part2):
+                                    ans = incur
+                                    break
+                            if check_ans(set(), pick):
+                                ans = incur
+                        else:
+                            break
+            else:
+                break
     print(f'#{case_num} {ans}')
 
 
