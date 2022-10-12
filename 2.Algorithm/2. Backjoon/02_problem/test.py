@@ -151,12 +151,20 @@
 # print(min((queue)))
 #
 #
-import sys
+# import sys
 # input = sys.stdin.readline
-T = input()
-while T != '0':
-    if T == T[::-1]:
-        print('yes')
-    else:
-        print('no')
-    T = input()
+# N = int(input())
+# str_list = list({input().rstrip() for _ in range(N)})
+# str_list.sort(key=lambda x: (len(x), x))
+# for printing in range(len(str_list)):
+#     print(str_list[printing])
+
+from fractions import Fraction
+from math import factorial
+import sys
+input = sys.stdin.readline
+A, B = map(int, input().split())
+print(Fraction(factorial(A), (factorial(B)*factorial(A-B))))
+
+
+

@@ -24,11 +24,12 @@ for case_num in range(1, T+1):
                 sum_power += atom_list[idx][3] + atom_list[idx+1][3]
                 atom_list[idx][3] = 0
                 atom_list[idx + 1][3] = 0
-        removed_list = atom_list[::]
+
         rm_count = 0
         for explosion in range(len(atom_list)):
-            if atom_list[explosion][3] == 0:
-                del removed_list[explosion-rm_count]
+            if atom_list[explosion-rm_count][3] == 0 or\
+                    atom_list[explosion-rm_count][0] > 1000 or atom_list[explosion-rm_count][0] < -1000 or \
+                    atom_list[explosion-rm_count][1] > 1000 or atom_list[explosion-rm_count][1] < -1000:
+                del atom_list[explosion-rm_count]
                 rm_count += 1
-        atom_list = removed_list[::]
     print(f'#{case_num} {sum_power}')
