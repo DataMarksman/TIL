@@ -153,6 +153,10 @@
 #
 import sys
 # input = sys.stdin.readline
-A = [1,2,3,4,5,6,7,8,9,10]
-print(A[1:5])
-
+T = input()
+while T != '0':
+    if T == T[::-1]:
+        print('yes')
+    else:
+        print('no')
+    T = input()

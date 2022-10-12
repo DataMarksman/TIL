@@ -4,6 +4,7 @@
 # 2. 임시 리스트 제작하고, rm_count 쌓아서 지우는게 포인트. 다 지운 후에 본체에 덮어 쓰기.
 
 # 조타용 좌표
+
 dx = [0, 0, -1, 1]
 dy = [1, -1, 0, 0]
 
@@ -24,11 +25,8 @@ for case_num in range(1, T+1):
                 sum_power += atom_list[idx][3] + atom_list[idx+1][3]
                 atom_list[idx][3] = 0
                 atom_list[idx + 1][3] = 0
-        removed_list = atom_list[::]
-        rm_count = 0
-        for explosion in range(len(atom_list)):
-            if atom_list[explosion][3] == 0:
-                del removed_list[explosion-rm_count]
-                rm_count += 1
-        atom_list = removed_list[::]
+        for explosion in atom_list:
+            if explosion[3] == 0:
+                atom_list.remove(explosion)
     print(f'#{case_num} {sum_power}')
+
