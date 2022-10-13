@@ -159,12 +159,89 @@
 # for printing in range(len(str_list)):
 #     print(str_list[printing])
 
-from fractions import Fraction
-from math import factorial
-import sys
-input = sys.stdin.readline
-A, B = map(int, input().split())
-print(Fraction(factorial(A), (factorial(B)*factorial(A-B))))
+# from fractions import Fraction
+# from math import factorial
+# import sys
+
+dc = [0, 1, 0, -1, 1, 1, -1, -1]
+dr = [1, 0, -1, 0, 1, -1, -1, 1]
+
+t = int(input())
+for tc in range(t):
+    N, M = map(int, input().split())
+    o_list = [list(map(int, input().split())) for _ in range(M)]
+    # print(o_list)
+    arr = [['.'] * N for _ in range(N)]
+
+    if N == 4:
+        arr[1][1] = 'W'
+        arr[1][2] = 'B'
+        arr[2][1] = 'B'
+        arr[2][2] = 'W'
+    elif N == 6:
+        arr[2][2] = 'W'
+        arr[2][3] = 'B'
+        arr[3][2] = 'B'
+        arr[3][3] = 'W'
+    elif N == 8:
+        arr[3][3] = 'W'
+        arr[3][4] = 'B'
+        arr[4][3] = 'B'
+        arr[4][4] = 'W'
+
+
+    for i in range(M):
+        y = o_list[i][0] - 1
+        x = o_list[i][1] - 1
+        if o_list[i][2] == 1:
+            arr[x][y] = 'B'
+            for k in range(8):
+                change_stone = []
+                if 0 <= x + dr[k] < N and 0 <= y + dc[k] < N:
+                    if arr[x + dr[k]][y + dc[k]] == 'W':
+                        change_stone.append((x + dr[k], y + dc[k]))
+
+                        for g in range(2, N):
+                            if 0 <= x + dr[k] * g < N and 0 <= y + dc[k] * g < N:
+                                if arr[x + dr[k] * g][y + dc[k] * g] == 'W':
+                                    change_stone.append((x + dr[k] * g, y + dc[k] * g))
+                                elif arr[x + dr[k] * g][y + dc[k] * g] == 'B':
+                                    for t in range(len(change_stone)):
+                                        r, c = change_stone.pop(0)
+                                        arr[r][c] = 'B'
+                                    break
+                                else:
+                                    break
+
+        elif o_list[i][2] == 2:
+            arr[x][y] = 'W'
+            for k in range(8):
+                change_stone = []
+                if 0 <= x + dr[k] < N and 0 <= y + dc[k] < N:
+                    if arr[x + dr[k]][y + dc[k]] == 'B':
+                        change_stone.append((x + dr[k], y + dc[k]))
+
+                        for g in range(2, N):
+                            if 0 <= x + dr[k] * g < N and 0 <= y + dc[k] * g < N:
+                                if arr[x + dr[k] * g][y + dc[k] * g] == 'B':
+                                    change_stone.append((x + dr[k] * g, y + dc[k] * g))
+                                elif arr[x + dr[k] * g][y + dc[k] * g] == 'W':
+                                    for t in range(len(change_stone)):
+                                        r, c = change_stone.pop(0)
+                                        arr[r][c] = 'W'
+                                    break
+                                else:
+                                    break
+
+    white = 0
+    black = 0
+    for i in range(N):
+        for j in range(N):
+            if arr[i][j] == 'W':
+                white += 1
+            elif arr[i][j] == 'B':
+                black += 1
+    print(f'#{tc + 1} {black} {white}')
 
 
 
