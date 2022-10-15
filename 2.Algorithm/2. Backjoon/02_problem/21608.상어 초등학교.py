@@ -8,6 +8,7 @@ dx = [-1, 0, 0, 1]
 dy = [0, -1, 1, 0]
 
 
+# 받은 값을 기준으로 자리를 배정해주는 함수
 def spotting(k, love):
     love = set(love)
     max_love = len(love & visited)

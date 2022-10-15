@@ -244,22 +244,59 @@
 #     print(f'#{tc + 1} {black} {white}')
 
 
-N = int(input())
+# N = int(input())
+#
+# for pick in range(N//10, N):
+#     temp = sum(map(int, str(pick)))
+#     result = pick + temp
+#     if result == N:
+#         print(pick)
+#         break
+# else:
+#     print(0)
 
-for pick in range(N//10, N):
-    temp = sum(map(int, str(pick)))
-    result = pick + temp
-    if result == N:
-        print(pick)
-        break
-else:
-    print(0)
+# import sys
+# input = sys.stdin.readline
+# T = int(input())
+# check_set = set(map(int, input().split()))
+# N = int(input())
+# num_list = list(map(int, input().split()))
+# for printing in range(N):
+#     if num_list[printing] in check_set:
+#         print(1)
+#     else:
+#         print(0)
+
+import sys
+input = sys.stdin.readline
+# A, B, K = map(int, input().split())
+# if K <= A:
+#     print(1)
+# else:
+#     aim = K - A
+#     count = aim//(A-B)
+#     if aim%(A-B) > 0:
+#         count += 2
+#     else:
+#         count += 1
+#     print(count)
 
 
-
-
-
-
-
-
+T = int(input())
+for tc in range(T):
+    string = list(input())
+    stack = 0
+    for checking in range(len(string)):
+        if string[checking] == '(':
+            stack += 1
+        else:
+            stack -= 1
+        if stack < 0:
+            print('NO')
+            break
+    else:
+        if stack == 0:
+            print('YES')
+        else:
+            print('NO')
 
