@@ -267,8 +267,8 @@
 #     else:
 #         print(0)
 
-import sys
-input = sys.stdin.readline
+
+
 # A, B, K = map(int, input().split())
 # if K <= A:
 #     print(1)
@@ -281,22 +281,97 @@ input = sys.stdin.readline
 #         count += 1
 #     print(count)
 
+# import sys
+# T = int(sys.stdin.readline())
+# for tc in range(T):
+#     string = list(sys.stdin.readline().rstrip())
+#     stack = 0
+#     for checking in range(len(string)):
+#         if string[checking] == '(':
+#             stack += 1
+#         else:
+#             stack -= 1
+#             if stack < 0:
+#                 print('NO')
+#                 break
+#     else:
+#         if stack == 0:
+#             print('YES')
+#         else:
+#             print('NO')
 
-T = int(input())
-for tc in range(T):
-    string = list(input())
-    stack = 0
-    for checking in range(len(string)):
-        if string[checking] == '(':
-            stack += 1
-        else:
-            stack -= 1
-        if stack < 0:
-            print('NO')
-            break
-    else:
-        if stack == 0:
-            print('YES')
-        else:
-            print('NO')
+# import math
+# A, B = map(int, input().split())
+# print((math.factorial(A)) // ((math.factorial(A-B))*(math.factorial(B))))
+
+
+# import heapq
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+# H_queue = []
+# for put_in in range(N):
+#     line = tuple(map(int, input().split()))
+#     heapq.heappush(H_queue, (line[1], line[0]))
+# for printing in range(N):
+#     pick = heapq.heappop(H_queue)
+#     print(pick[1], pick[0])
+
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+# Queue = []
+# for Q in range(N):
+#     line = list(input().split())
+#     if line[0] == 'push':
+#         Queue.append(line[1])
+#     elif line[0] == 'front':
+#         if Queue:
+#             print(Queue[0])
+#         else:
+#             print(-1)
+#     elif line[0] == 'back':
+#         if Queue:
+#             print(Queue[len(Queue)-1])
+#         else:
+#             print(-1)
+#     elif line[0] == 'pop':
+#         if Queue:
+#             print(Queue.pop(0))
+#         else:
+#             print(-1)
+#     elif line[0] == 'size':
+#         if Queue:
+#             print(len(Queue))
+#         else:
+#             print(0)
+#     elif line[0] == 'pop':
+#         if Queue:
+#             print(Queue.pop(0))
+#         else:
+#             print(-1)
+#     elif line[0] == 'empty':
+#         if Queue:
+#             print(0)
+#         else:
+#             print(1)
+
+
+
+import itertools
+
+N = int(input())
+idx_list = []
+for put_in in range(N):
+    idx_list.append(tuple(map(int, input().split())))
+ans = 0
+idx_pick = list(itertools.combinations((i for i in range(N)), 3))
+for picking in range(len(idx_pick)):
+    A, B, C = idx_pick.pop()
+
+
+
+print(ans)
+
+
 
