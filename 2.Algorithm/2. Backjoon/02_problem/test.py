@@ -358,20 +358,7 @@
 
 
 
-import itertools
 
-N = int(input())
-idx_list = []
-for put_in in range(N):
-    idx_list.append(tuple(map(int, input().split())))
-ans = 0
-idx_pick = list(itertools.combinations((i for i in range(N)), 3))
-for picking in range(len(idx_pick)):
-    A, B, C = idx_pick.pop()
-
-
-
-print(ans)
 
 
 
