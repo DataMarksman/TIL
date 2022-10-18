@@ -11,10 +11,6 @@ input = sys.stdin.readline
 
 def play(direct, board):
     board = deepcopy(board)
-    print('==============', direct, '로 시작===========')
-    for printing in range(N):
-        print(board[printing])
-
     if direct == 0:
         for X in range(N):
             top = 0
@@ -25,12 +21,14 @@ def play(direct, board):
                         board[X][top] += value
                         board[X][Y] = 0
                         value = 0
+                        top += 1
                     else:
+                        if value:
+                            top += 1
                         board[X][top] = int(board[X][Y])
                         value = int(board[X][Y])
                         if top != Y:
                             board[X][Y] = 0
-                    top += 1
     elif direct == 1:
         for X in range(N):
             top = N-1
@@ -41,12 +39,14 @@ def play(direct, board):
                         board[X][top] = value*2
                         board[X][Y] = 0
                         value = 0
+                        top -= 1
                     else:
+                        if value:
+                            top -= 1
                         board[X][top] = int(board[X][Y])
                         value = int(board[X][Y])
                         if top != Y:
                             board[X][Y] = 0
-                        top -= 1
     elif direct == 2:
         for X in range(N):
             top = 0
@@ -57,12 +57,14 @@ def play(direct, board):
                         board[top][X] = value*2
                         board[Y][X] = 0
                         value = 0
+                        top += 1
                     else:
+                        if value:
+                            top += 1
                         board[top][X] = int(board[Y][X])
                         value = int(board[Y][X])
                         if top != Y:
                             board[Y][X] = 0
-                        top += 1
     elif direct == 3:
         for X in range(N):
             top = N-1
@@ -73,23 +75,15 @@ def play(direct, board):
                         board[top][X] = value*2
                         board[Y][X] = 0
                         value = 0
-                    else:
-                        if not value:
-                            board[top][X] = int(board[Y][X])
-                            value = int(board[Y][X])
-                            if top != Y:
-                                board[Y][X] = 0
-                            top -= 1
-                        else:
-                            if not value:
-                                board[top][X] = int(board[Y][X])
-                                value = int(board[Y][X])
-                                if top != Y:
-                                    board[Y][X] = 0
+                        top -= 1
 
-    print('==============', direct, '로 돌림===========')
-    for printing in range(N):
-        print(board[printing])
+                    else:
+                        if value:
+                            top -= 1
+                        board[top][X] = int(board[Y][X])
+                        value = int(board[Y][X])
+                        if top != Y:
+                            board[Y][X] = 0
     return board
 
 

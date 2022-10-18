@@ -184,21 +184,70 @@ print(list_A[0:2][2])
 # print({7, 9} & A)
 #
 # print(A)
+#
+#
+# import sys
+# input = sys.stdin.readline
+# T = int(input())
+# for tc in range(1, T+1):
+#     num_list = list(map(int, input().split()))
+#     A = sum(num_list[1:])/num_list[0]
+#     B = num_list[0]
+#     count = 0
+#     for checking in range(1, len(num_list)):
+#         if num_list[checking] > A:
+#             count += 1
+#     ans = (count/B)*100
+#     print(f'{ans:.3f}%')
 
 
-import sys
-input = sys.stdin.readline
-T = int(input())
-for tc in range(1, T+1):
-    num_list = list(map(int, input().split()))
-    A = sum(num_list[1:])/num_list[0]
-    B = num_list[0]
-    count = 0
-    for checking in range(1, len(num_list)):
-        if num_list[checking] > A:
-            count += 1
-    ans = (count/B)*100
-    print(f'{ans:.3f}%')
+
+dr = [0, 1, 0, -1]
+dc = [1, 0, -1, 0]
+
+N, M = map(int, input().split())  # N이 세로, M이 가로
+cheese = [list(map(int, input().split())) for _ in range(N)]
+# print(cheese)
 
 
+cnt = 0
+flag = True
+real_cheese_cnt = [0]
+q = [(0, 0), ]
 
+while True:
+    cheese_cnt = 0
+    for i in range(N):
+        for j in range(M):
+            if cheese[i][j] == 3:
+                q.append((i, j))
+                cheese[i][j] = 0
+    melting = set()
+    while q:
+        x, y = q.pop(0)
+        for k in range(4):
+            if 0 <= x+dr[k] < N and 0 <= y+dc[k] < M:
+                if cheese[x+dr[k]][y+dc[k]] == 0:
+                    cheese[x+dr[k]][y+dc[k]] = 2
+                    q.append((x+dr[k], y+dc[k]))
+                elif cheese[x+dr[k]][y+dc[k]] == 1:
+                    melting.add((x+dr[k], y+dc[k]))
+
+    for pick in range(len(melting)):
+        r, c = melting.pop()
+        cheese[r][c] = 3
+        cheese_cnt += 1
+
+    if cheese_cnt == 0:
+        flag = False
+        break
+
+    cnt += 1
+    real_cheese_cnt.append(cheese_cnt)
+
+    for ch in cheese:
+        print(*ch)
+    print()
+    print(real_cheese_cnt)
+print(cnt)
+print(real_cheese_cnt[-1])
