@@ -39,34 +39,41 @@ for turn in range(K):
             ans += magic_Q.pop(distance + direction*((destroy+1)*2))
         else:
             break
-    value = -1
-    count = 0
-    temp_idx = 0
-    idx = 0
-    for checking in range(len(magic_Q)):
-        if magic_Q[idx] != value:
-            if count >= 4:
-                for popping in range(count):
-                    ans += magic_Q.pop(temp_idx)
-                idx = int(temp_idx)
-                value = magic_Q[idx]
-                count = 1
+
+    flag = True
+    while flag:
+        value = -1
+        count = 0
+        temp_idx = 0
+        idx = 0
+        flag = False
+        for checking in range(len(magic_Q)):
+            if magic_Q[idx] != value:
+                if count >= 4:
+                    flag = True
+                    for popping in range(count):
+                        ans += magic_Q.pop(temp_idx)
+                    idx = int(temp_idx)
+                    value = magic_Q[idx]
+                    count = 1
+                    idx += 1
+                else:
+                    value = magic_Q[idx]
+                    temp_idx = idx
+                    count = 1
+                    idx += 1
             else:
-                value = magic_Q[idx]
-                temp_idx = idx
-                count = 1
+                count += 1
                 idx += 1
-        else:
-            count += 1
-            idx += 1
-    if count >= 4:
-        for popping in range(count):
-            ans += magic_Q.pop()
+        if count >= 4:
+            flag = True
+            for popping in range(count):
+                ans += magic_Q.pop()
     New_Q = []
     refill_count = 0
     refill_value = 0
     for filling in range(len(magic_Q)):
-        if magic_Q[filling] != refill_value and refill_count >= 1:
+        if magic_Q[filling] != refill_value and refill_count:
             New_Q.append(refill_count)
             New_Q.append(refill_value)
             refill_count = 1
