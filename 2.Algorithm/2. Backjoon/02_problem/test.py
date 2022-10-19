@@ -354,103 +354,139 @@
 #         if Queue:
 #             print(0)
 #         else:
-#             print(1)
+# #             print(1)
+#
+# t = int(input())
+# for tc in range(t):
+#     N = int(input())
+#     tree = list(map(int, input().split()))
+#     # print(tree)
+#
+#     max_tree = max(tree)
+#     day = 0
+#     small_tree = []
+#     for i in range(N):
+#         if tree[i] < max_tree:
+#             small_tree.append(tree[i])
+#     while small_tree:
+#         for x in range(len(small_tree)):
+#             if small_tree[x] == max_tree:
+#                 small_tree.sort()
+#                 small_tree.pop()
+#                 break
+#
+#         if len(small_tree) == 0:
+#             break
+#         for j in range(len(small_tree)):
+#             if max_tree - small_tree[j] == 1:
+#                 if day % 2 == 0:
+#                     small_tree[j] += 1
+#                     day += 1
+#                     break
+#             elif max_tree - small_tree[j] == 2:
+#                 if day % 2 == 1:
+#                     small_tree[j] += 2
+#                     day += 1
+#                     break
+#
+#             if max_tree - small_tree[j] > 2:
+#                 if day % 2 == 0:
+#                     small_tree[j] = small_tree[j] + 1
+#                     day += 1
+#                     break
+#                 elif day % 2 == 1:
+#                     small_tree[j] = small_tree[j] + 2
+#                     day += 1
+#                     break
+#         else:
+#             day += 1
+#
+#     print(f'#{tc+1} {day}')
+#
+#
+#
+# """
+# 10
+# 10
+# 9 9 9 9 9 9 9 9 9 10
+# 10
+# 8 9 9 9 9 9 9 9 9 10
+# 10
+# 7 9 9 9 9 9 9 9 9 10
+# 10
+# 7 7 7 7 7 7 9 9 9 10
+# 10
+# 8 8 8 8 8 8 8 8 8 10
+# 2
+# 1 1
+# 3
+# 1 1 100
+# 100
+# 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3
+# 10
+# 1 2 1 2 1 2 1 2 1 3
+# 10
+# 1 9 9 9 9 9 9 9 9 10
+#
+#
+# #1 17
+# #2 15
+# #3 17
+# #4 17
+# #5 12 [
+# #6 0
+# #7 132
+# #8 132 [
+# #9 10
+# #10 17 [
+# < 다솔 쓰 답 >
+# #1 17
+# #2 15
+# #3 17
+# #4 17
+# #5 18 [
+# #6 0
+# #7 132
+# #8 198 [
+# #9 10
+# #10 21 [
+# 1 2 1 / 2 1 1 / 2
+#
+# """
+#
 
-t = int(input())
-for tc in range(t):
-    N = int(input())
-    tree = list(map(int, input().split()))
-    # print(tree)
 
-    max_tree = max(tree)
-    day = 0
-    small_tree = []
-    for i in range(N):
-        if tree[i] < max_tree:
-            small_tree.append(tree[i])
-    while small_tree:
-        for x in range(len(small_tree)):
-            if small_tree[x] == max_tree:
-                small_tree.sort()
-                small_tree.pop()
-                break
 
-        if len(small_tree) == 0:
-            break
-        for j in range(len(small_tree)):
-            if max_tree - small_tree[j] == 1:
-                if day % 2 == 0:
-                    small_tree[j] += 1
-                    day += 1
-                    break
-            elif max_tree - small_tree[j] == 2:
-                if day % 2 == 1:
-                    small_tree[j] += 2
-                    day += 1
-                    break
-
-            if max_tree - small_tree[j] > 2:
-                if day % 2 == 0:
-                    small_tree[j] = small_tree[j] + 1
-                    day += 1
-                    break
-                elif day % 2 == 1:
-                    small_tree[j] = small_tree[j] + 2
-                    day += 1
-                    break
+import sys
+input = sys.stdin.readline
+N = int(input())
+info = [list(map(int, input().split())) for _ in range(N)]
+price = []
+for r in range(N):
+    for c in range(N):
+        if r == 0 or r == N - 1:
+            continue
+        elif c == 0 or c == N - 1:
+            price.append(3001)
         else:
-            day += 1
-
-    print(f'#{tc+1} {day}')
-
-
-
-"""
-10
-10
-9 9 9 9 9 9 9 9 9 10
-10
-8 9 9 9 9 9 9 9 9 10
-10
-7 9 9 9 9 9 9 9 9 10
-10
-7 7 7 7 7 7 9 9 9 10
-10
-8 8 8 8 8 8 8 8 8 10
-2
-1 1
-3
-1 1 100
-100
-1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 3
-10
-1 2 1 2 1 2 1 2 1 3
-10
-1 9 9 9 9 9 9 9 9 10
+            temp = info[r][c] + info[r - 1][c] + info[r + 1][c] + info[r][c - 1] + info[r][c + 1]
+            price.append(temp)
+ans = 3000
+for i in range(N*(N-2)):
+    visited_i = {i+N, i+N-1, i+N, i+N+1, i+2*N, }
+    if price[i] > ans:
+        continue
+    for j in range(i+3, N*(N-2)):
+        if j in visited_i or price[i]+price[j] > ans:
+            continue
+        visited_j = {j+N, j+N-1, j+N, j+N+1, j+2*N, }
+        for k in range(j+3, N*(N-2)):
+            if k in visited_i or k in visited_j:
+                continue
+            elif ans > price[i]+price[j]+price[k]:
+                ans = price[i]+price[j]+price[k]
+print(ans)
 
 
-#1 17
-#2 15
-#3 17
-#4 17
-#5 12 [
-#6 0
-#7 132
-#8 132 [
-#9 10
-#10 17 [
-< 다솔 쓰 답 >
-#1 17
-#2 15
-#3 17
-#4 17
-#5 18 [
-#6 0
-#7 132
-#8 198 [
-#9 10
-#10 21 [
-1 2 1 / 2 1 1 / 2
 
-"""
 
