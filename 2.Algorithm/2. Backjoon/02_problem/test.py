@@ -455,37 +455,46 @@
 # """
 #
 
+#
+#
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+# info = [list(map(int, input().split())) for _ in range(N)]
+# price = []
+# for r in range(N):
+#     for c in range(N):
+#         if r == 0 or r == N - 1:
+#             continue
+#         elif c == 0 or c == N - 1:
+#             price.append(3001)
+#         else:
+#             temp = info[r][c] + info[r - 1][c] + info[r + 1][c] + info[r][c - 1] + info[r][c + 1]
+#             price.append(temp)
+# ans = 3000
+# for i in range(N*(N-2)):
+#     visited_i = {i+N, i+N-1, i+N, i+N+1, i+2*N, }
+#     if price[i] > ans:
+#         continue
+#     for j in range(i+3, N*(N-2)):
+#         if j in visited_i or price[i]+price[j] > ans:
+#             continue
+#         visited_j = {j+N, j+N-1, j+N, j+N+1, j+2*N, }
+#         for k in range(j+3, N*(N-2)):
+#             if k in visited_i or k in visited_j:
+#                 continue
+#             elif ans > price[i]+price[j]+price[k]:
+#                 ans = price[i]+price[j]+price[k]
+# print(ans)
+#
+#
+#
+#
 
 
-import sys
-input = sys.stdin.readline
-N = int(input())
-info = [list(map(int, input().split())) for _ in range(N)]
-price = []
-for r in range(N):
-    for c in range(N):
-        if r == 0 or r == N - 1:
-            continue
-        elif c == 0 or c == N - 1:
-            price.append(3001)
-        else:
-            temp = info[r][c] + info[r - 1][c] + info[r + 1][c] + info[r][c - 1] + info[r][c + 1]
-            price.append(temp)
-ans = 3000
-for i in range(N*(N-2)):
-    visited_i = {i+N, i+N-1, i+N, i+N+1, i+2*N, }
-    if price[i] > ans:
-        continue
-    for j in range(i+3, N*(N-2)):
-        if j in visited_i or price[i]+price[j] > ans:
-            continue
-        visited_j = {j+N, j+N-1, j+N, j+N+1, j+2*N, }
-        for k in range(j+3, N*(N-2)):
-            if k in visited_i or k in visited_j:
-                continue
-            elif ans > price[i]+price[j]+price[k]:
-                ans = price[i]+price[j]+price[k]
-print(ans)
+
+A = [0, 1,2,3,4,5,6,7,8,9,10]
+print(A[:15])
 
 
 
