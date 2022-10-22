@@ -4,11 +4,13 @@
 # import sys
 # sys.setrecursionlimit(10**6)
 #
-#
+
+# 2의 30승 까지의 메모
 memo = [0, 1, 3, 7, 15, 31, 63, 127, 255, 511, 1023,
         2047, 4095, 8191, 16383, 32767, 65535, 131071, 262143, 524287, 1048575,
         2097151, 4194303, 8388607, 16777215, 33554431, 67108863, 134217727, 268435455, 536870911, 1073741823]
 
+# 0~128 까지의 메모. max 값은 22 이다.
 memo_cut = [0, 1, 2, 2, 3, 4, 4, 3, 4, 5, 5, 6, 7, 7, 6, 4, 5, 6, 6, 7, 8, 8, 7, 8, 9, 9,
             10, 11, 11, 10, 8, 5, 6, 7, 7, 8, 9, 9, 8, 9, 10, 10, 11, 12, 12, 11, 9, 10, 11,
             11, 12, 13, 13, 12, 13, 14, 14, 15, 16, 16, 15, 13, 10, 6, 7, 8, 8, 9, 10, 10, 9,
@@ -16,27 +18,29 @@ memo_cut = [0, 1, 2, 2, 3, 4, 4, 3, 4, 5, 5, 6, 7, 7, 6, 4, 5, 6, 6, 7, 8, 8, 7,
             16, 14, 11, 12, 13, 13, 14, 15, 15, 14, 15, 16, 16, 17, 18, 18, 17, 15, 16, 17, 17,
             18, 19, 19, 18, 19, 20, 20, 21, 22, 22, 21, 19, 16, 12, 7]
 
-check_list = [0]
-for check in range(1, 1000000001):
-    count = 0
-    t = 30
-    while check > 0:
-        if check <= len(check_list)-1:
-            count += check_list[check]
-            check = 0
-        elif check >= memo[t]:
-            check -= memo[t]
-            count += t
-        else:
-            t -= 1
-    check_list.append(count)
-
-# k 는 비교할 상수, count_J는 이미 점프한 횟수
-
-
-T = int(input())
-for case_num in range(1, T+1):
-    N, M = tuple(map(int, input().split()))
-    print(max(check_list[N:M+1]))
+print(max(memo_cut))
+#
+# check_list = [0]
+# for check in range(1, 1000000001):
+#     count = 0
+#     t = 30
+#     while check > 0:
+#         if check <= len(check_list)-1:
+#             count += check_list[check]
+#             check = 0
+#         elif check >= memo[t]:
+#             check -= memo[t]
+#             count += t
+#         else:
+#             t -= 1
+#     check_list.append(count)
+#
+# # k 는 비교할 상수, count_J는 이미 점프한 횟수
+#
+#
+# T = int(input())
+# for case_num in range(1, T+1):
+#     N, M = tuple(map(int, input().split()))
+#     print(max(check_list[N:M+1]))
 
 
