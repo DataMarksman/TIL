@@ -18,13 +18,25 @@
   <p>테마를 바꿔봅시다.</p>
 
   <script>
-    /*
-      li를 클릭하면, 아래와 같이 컬러 테마를 바꾸는 기능을 구현하시오.
-      1. li#grayButton 클릭시 background-color는 gray, color는 white로 변경
-      2. li#whiteButton 클릭시 background-color는 white, color는 black으로 변경
-      3. li#navyButton 클릭시 background-color는 navy, color는 white로 변경
-    */
-
+    const gray = document.querySelector('#grayButton')
+    const white = document.querySelector("#whiteButton")
+    const navy = document.querySelector('#navyButton')
+    const h1Tag = document.querySelector('h1')
+    const pTag = document.querySelector('p')
+    const body_color = document.querySelector('body')
+    gray.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "gray"
+      body_color.style.color = "white"
+    })
+    white.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "white"
+      body_color.style.color = "navy"
+    })
+    navy.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "navy"
+      body_color.style.color = "white"
+    })
+  
   </script>
 </body>
 
