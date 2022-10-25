@@ -12,7 +12,7 @@ for (let j=0; j < numbers.length; j++) {console.log(numbers[j])}
 
 // Array용 for => 요소를 꺼내는 for 이며, of 문을 쓴다
 for (const number of numbers) {
-  console.log(number, tpyeof(number))
+  console.log(number, typeof(number))
 }
 
 // Object용 for 이며, key를 꺼내는 for 이다. in 문을 쓴다

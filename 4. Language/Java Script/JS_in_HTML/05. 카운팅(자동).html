@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>수동 카운터</h2>
+  <p class="p1">0</p>
+  <button class="plusOne">하나씩 카운트</button>
+  <hr>
+
+  <h2>자동 카운터 => 10이 되면 멈춘다!</h2>
+  <p class = 'p2'>0</p>
+  <hr>
+
+  <script>
+    
+    // 수동 카운터 구현
+    const pTag1 = document.querySelector('.p1')
+    const plusOne = document.querySelector('.plusOne')
+    const plus = function () {
+      let cnt = parseInt(pTag1.innerText)
+      cnt ++
+      pTag1.innerText = cnt
+    }
+    plusOne.addEventListener('click', plus)
+
+    // 자동 카운터 구현
+    const pTag2 = document.querySelector('.p2')
+    const autoPlus = function() {
+      let autoCnt = parseInt(pTag2.innerText)
+      //10 전에는 하나씩 카운트 해라
+      if (autoCnt <= 9) {
+        autoCnt ++
+        pTag2.innerText = autoCnt
+      
+      // 10이 되면 매크로 종료
+      } else {
+        clearInterval(interval)
+        pTag2.innerText = 0
+      }
+    }
+    // 매크로 설정
+    let interval = setInterval(autoPlus, 1000)
+
+
+  </script>
+</body>
+</html>

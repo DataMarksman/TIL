@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .btn {
+      color: red;
+      background: none;
+    }
+  </style>
+  <h2>클릭으로 버튼 색상 바꿔보기</h2>
+  <button>색상을 반전시켜보자!</button>
+  <!-- 위의 버튼을 클릭하면, 아래와 같이 버튼 class가 붙도록 해보자. -->
+  <!-- <button class="btn">색상을 반전시켜보자!</button> -->
+
+  <script>
+    const btn = document.querySelector('button')
+    btn.addEventListener('click', function () {
+      this.classList.toggle('btn')
+    })
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .red { 
+      color: red;
+    }
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="red">안녕하세요</h1>
+  <div></div>
+
+  <script>
+    // 결국 HTML에서 했던거를 스크립트 명령어로 작성하는 것이다.
+
+    // 만만한 a 태그로 시작할거야?
+    const aTag = document.createElement('a')
+    aTag.setAttribute('href', 'https://google.com')
+    aTag.innerText = '구글'
+    
+    // div에 넣어줄거야! 찍어주고 링크 넣어주기
+    const divTag = document.querySelector('div')
+    divTag.appendChild(aTag)
+    
+    // 나, 이런이런 것들만 바꿔주고 싶어! h1만 색 바꿔볼께?
+    const h1Tag = document.querySelector('h1')
+    h1Tag.classList
+    h1Tag.classList.toggle('blue')
+  </script>
+</body>
+</html>
