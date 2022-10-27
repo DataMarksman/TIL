@@ -491,11 +491,11 @@
 #
 #
 
-
-
-A = [0, 1,2,3,4,5,6,7,8,9,10]
-print(A[:15])
-
+import sys
+input = sys.stdin.readline
+N = int(input())
+num_list = list(map(int, input().split()))
+print(num_list.count(int(input())))
 
 
 
