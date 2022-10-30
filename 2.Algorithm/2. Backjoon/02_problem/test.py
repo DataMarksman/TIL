@@ -491,11 +491,14 @@
 #
 #
 
-import sys
-input = sys.stdin.readline
-N = int(input())
-num_list = list(map(int, input().split()))
-print(num_list.count(int(input())))
+N, M = map(int, input().split())
+board = [list(map(int, input().split())) for _ in range(N)]
+for x in range(N):
+    line = list(map(int, input().split()))
+    for y in range(M):
+        board[x][y] += line[y]
+for printing in range(N):
+    print(*board[printing])
 
 
 
