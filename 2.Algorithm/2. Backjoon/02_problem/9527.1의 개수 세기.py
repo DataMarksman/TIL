@@ -20,8 +20,23 @@ def sum_bi(k):
 
 def count_bi(depth, idx):
     result = count_bi(depth-1, idx)
+
     return
 
+
 N, M = map(int, input().split())
-num_list = [list(map(int, input().split())) for _ in range(N)]
+idx_N = -1
+idx_M = -1
+idx = 0
+while idx_N < 0 or idx_M < 0:
+    if 2**idx > N and idx_N < 0:
+        idx_N = idx - 1
+    if 2**idx > M and idx_M < 0:
+        idx_M = idx - 1
+
+
+
+
+
+
 

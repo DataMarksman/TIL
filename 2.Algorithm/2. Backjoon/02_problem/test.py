@@ -491,14 +491,35 @@
 #
 #
 
-N, M = map(int, input().split())
-board = [list(map(int, input().split())) for _ in range(N)]
-for x in range(N):
-    line = list(map(int, input().split()))
-    for y in range(M):
-        board[x][y] += line[y]
-for printing in range(N):
-    print(*board[printing])
+# N, M = map(int, input().split())
+# board = [list(map(int, input().split())) for _ in range(N)]
+# for x in range(N):
+#     line = list(map(int, input().split()))
+#     for y in range(M):
+#         board[x][y] += line[y]
+# for printing in range(N):
+#     print(*board[printing])
+
+# import sys
+# input = sys.stdin.readline
+# max_ans = -1
+# idx = (0, 0)
+# for x in range(1, 10):
+#     line = list(map(int, input().split()))
+#     for y in range(9):
+#         if line[y] > max_ans:
+#             max_ans = int(line[y])
+#             idx = (x, y+1)
+# print(max_ans)
+# print(*idx)
+
+
+
+
+
+
+
+
 
 
 
