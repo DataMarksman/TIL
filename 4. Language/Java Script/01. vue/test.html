@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="app">
+    <p>{{ message }}</p>
+    <button @click = "hello">클 릭 하라구</button>
+    <!-- 고유값, 즉 idx같은 key 값을 설정해줘야 한다. -->
+    <input type="submit" 
+    v-for="(my_name, idx) in names" 
+    :key="index" 
+    :value="my_name">
+  </div>
+  
+  
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+
+
+    const obj = {
+      el: '.app',
+      data: {  
+        message: 'hihi',
+        names: ['철수', '훈이', '영희'],
+      },
+      methods: {
+        hello() {
+          console.log('hello')
+        }
+      }
+    }
+
+    const app = new Vue(obj)
+
+  </script>
+</body>
+</html>
