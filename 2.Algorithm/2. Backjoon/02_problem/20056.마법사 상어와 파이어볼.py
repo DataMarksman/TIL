@@ -2,13 +2,32 @@
 # 설계 의도: 조건에 맞는 실행
 # 개선점:
 import sys
-# sys.setrecursionlimit(10**6)
+import heapq
 input = sys.stdin.readline
-N = int(input())
-num_list = list(map(int, input().split()))
 
-N = int(input())
-for case_num in range(1,N+1):
+dx = [-1, -1, 0, 1, 1, 1, 0, -1]
+dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
-    T = int(input())
-    for case_num in range(1, T + 1):
+# N, M, T = map(int, input().split())
+# board = [[(0, 0, 0)]*N for _ in range(N)]
+# for magics in range(M):
+#     r, c, m, s, d = map(int, input().split())
+#     pr = max(0, min(r + dx[d]*s, N-1))
+#     pc = max(0, min(c + dy[d]*s, N-1))
+#     board[pr][pc] = (board[pr][pc][0] + m, board[pr][pc][1] + s, board[pr][pc][2] + d)
+
+
+N, M, T = map(int, input().split())
+idx_list = []
+for magics in range(M):
+    r, c, m, s, d = map(int, input().split())
+    heapq.heappush(idx_list, (r, c, m, s, d))
+turn = 0
+while turn < T:
+    turn += 1
+    X, Y, M, S, D = heapq.heappop(idx_list)
+    while idx_list:
+
+        pick = heapq.heappop(idx_list)
+
+

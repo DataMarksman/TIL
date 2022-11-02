@@ -513,22 +513,20 @@
 # print(max_ans)
 # print(*idx)
 
-
-import sys
-input = sys.stdin.readline
-A, B, C = map(int, input().split())
-if B >= C:
-    print(-1)
-elif A == 0 and C > B:
-    print(1)
-else:
-    ans = A//(C-B)
-    ans += 1
-    print(ans)
-
-
-
-
-
+#
+# import sys
+# input = sys.stdin.readline
+# A, B, C = map(int, input().split())
+# if B >= C:
+#     print(-1)
+# elif A == 0 and C > B:
+#     print(1)
+# else:
+#     ans = A//(C-B)
+#     ans += 1
+#     print(ans)
+#
+#
+#
 
 
