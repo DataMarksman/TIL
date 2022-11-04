@@ -530,3 +530,33 @@
 #
 
 
+
+
+
+import sys
+input = sys.stdin.readline
+N = int(input())
+ans = 0
+for text in range(N):
+    line = list(input())
+    check_set = {line[0]}
+    for check in range(1, len(line)):
+        if line[check] == line[check-1]:
+            pass
+        elif line[check] in check_set:
+            break
+        else:
+            check_set.add(line[check])
+    else:
+        ans += 1
+print(ans)
+
+
+
+
+
+
+
+
+
+
