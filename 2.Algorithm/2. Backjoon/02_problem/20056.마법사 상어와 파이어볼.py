@@ -18,13 +18,14 @@ dy = [0, 1, 1, 1, 0, -1, -1, -1]
 
 
 N, M, T = map(int, input().split())
-idx_list = []
+board = [[set()]*N for _ in range(N)]
 for magics in range(M):
     r, c, m, s, d = map(int, input().split())
-    heapq.heappush(idx_list, (r, c, m, s, d))
+    board[r][c].add((m, s, d))
 turn = 0
 while turn < T:
     turn += 1
+    reboard = [[set()]*N for _ in range(N)]
     X, Y, M, S, D = heapq.heappop(idx_list)
     while idx_list:
 
