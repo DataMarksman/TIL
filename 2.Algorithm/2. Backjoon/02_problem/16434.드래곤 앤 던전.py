@@ -4,37 +4,20 @@
 import sys
 input = sys.stdin.readline
 N, ATK = map(int, input().split())
-ATK = int(ATK)
 max_HP = 1
 temp_HP = 1
-temp_heal = 0
 for rooms in range(N):
     line = list(map(int, input().split()))
     if line[0] == 2:
         ATK += line[1]
-        if temp_HP < max_HP:
-            if max_HP - temp_HP >= line[2]:
-                temp_HP += line[2]
-            else:
-                temp_heal += line[2] - (max_HP - temp_HP)
-                temp_HP = int(max_HP)
-        else:
-            temp_heal += line[2]
+        temp_HP = temp_HP + line[2] if max_HP - temp_HP >= line[2] else max_HP
     else:
-        enemy_ATK = line[1]
-        enemy_HP = line[2]
-        while True:
-            enemy_HP -= ATK
-            if enemy_HP <= 0:
-                break
-            else:
-                if enemy_ATK >= temp_HP + temp_heal:
-                    max_HP += abs(enemy_ATK - (temp_HP + temp_heal))+1
-                    temp_heal = 0
-                elif enemy_ATK >= temp_HP:
-                    max_HP += abs(enemy_ATK - temp_HP)+1
-                else:
-                    temp_HP -= enemy_ATK
+        dealing = line[1] * (line[2]//ATK) if line[2]%ATK else line[1] * ((line[2]//ATK)-1)
+        if temp_HP < dealing:
+            max_HP += dealing - temp_HP + 1
+            temp_HP = 1
+        else:
+            temp_HP -= dealing
 print(max_HP)
 
 """

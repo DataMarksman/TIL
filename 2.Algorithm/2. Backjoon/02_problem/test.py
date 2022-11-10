@@ -550,6 +550,7 @@
 
 
 
+<<<<<<< HEAD
 # import sys
 # input = sys.stdin.readline
 # N = int(input())
@@ -567,6 +568,8 @@
 #     ans, short = short, ans
 # print(f'{ans}/{short}')
 
+original = { '5', '6', '7', '8', '9', '1', '2', '3', '4',}
+print(sorted(original))
 
 
 
