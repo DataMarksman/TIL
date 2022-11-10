@@ -550,9 +550,22 @@
 
 
 
-import sys
-input = sys.stdin.readline
-print(sum(map(int, input().split())))
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+# pick = 1
+# ans = 0
+# while True:
+#     if N - pick <= 0:
+#         ans = N
+#         break
+#     else:
+#         N -= pick
+#         pick += 1
+# short = pick - N + 1
+# if pick % 2 != 0:
+#     ans, short = short, ans
+# print(f'{ans}/{short}')
 
 
 
