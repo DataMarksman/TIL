@@ -550,10 +550,8 @@
 
 
 
-import sys
-input = sys.stdin.readline
-print(sum(map(int, input().split())))
-
+original = { '5', '6', '7', '8', '9', '1', '2', '3', '4',}
+print(sorted(original))
 
 
 
