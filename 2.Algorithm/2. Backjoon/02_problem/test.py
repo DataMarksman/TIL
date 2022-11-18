@@ -578,34 +578,83 @@
 # print(A - (ans*B))
 
 
+# import sys
+# input = sys.stdin.readline
+# from collections import deque
+# n = int(input())
+# q = deque([])
+# for i in range(n):
+#     s = input().split()
+#     if s[0] == 'push':
+#         q.append(s[1])
+#     elif s[0] == 'pop':
+#         if not q:
+#             print(-1)
+#         else:
+#             print(q.popleft())
+#     elif s[0] == 'size':
+#         print(len(q))
+#     elif s[0] == 'empty':
+#         if not q:
+#             print(1)
+#         else:
+#             print(0)
+#     elif s[0] == 'front':
+#         if not q:
+#             print(-1)
+#         else:
+#             print(q[0])
+#     elif s[0] == 'back':
+#         if not q:
+#             print(-1)
+#         else:
+#             print(q[-1])
+
+# import sys
+# input = sys.stdin.readline
+#
+#
+# fibo = [0 for _ in range(1500000)]
+# N = int(input())
+# fibo[0:1] = [0, 1]
+#
+# if N < 0:
+#     for i in range(-1, N - 1, -1):
+#         data = fibo[i+2] - fibo[i+1]
+#         if data < 0:
+#             fibo[i] = (abs(data) % 1000000000) * -1
+#         else:
+#             fibo[i] = data % 1000000000
+#     if fibo[N] < 0:
+#         print(-1)
+#         print(fibo[N] * -1)
+#     else:
+#         print(1)
+#         print(fibo[N])
+#
+#
+# elif N > 0:
+#     for i in range(2, N + 1):
+#         fibo[i] = (fibo[i - 1] + fibo[i - 2]) % 1000000000
+#
+#     print(1)
+#     print(fibo[N])
+#
+# else:
+#     print(0)
+#     print(0)
+
+
+
+
 import sys
 input = sys.stdin.readline
-from collections import deque
-n = int(input())
-q = deque([])
-for i in range(n):
-    s = input().split()
-    if s[0] == 'push':
-        q.append(s[1])
-    elif s[0] == 'pop':
-        if not q:
-            print(-1)
-        else:
-            print(q.popleft())
-    elif s[0] == 'size':
-        print(len(q))
-    elif s[0] == 'empty':
-        if not q:
-            print(1)
-        else:
-            print(0)
-    elif s[0] == 'front':
-        if not q:
-            print(-1)
-        else:
-            print(q[0])
-    elif s[0] == 'back':
-        if not q:
-            print(-1)
-        else:
-            print(q[-1])
+N = int(input())
+Queue = []
+for checking in range(N):
+    pick = int(input())
+    if pick == 0:
+        Queue.pop()
+    else:
+        Queue.append(pick)
+print(sum(Queue))
