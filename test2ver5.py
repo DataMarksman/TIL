@@ -1,8 +1,9 @@
+# 문제 설계: 이거 완전 게리멘더링인데...
+# 문제는 내가 게리멘더링을 못풀었음.
 import itertools
 import sys
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
-
 
 def rootchecking(idx, visited):
     visited = set(visited)
@@ -20,37 +21,33 @@ def rootchecking(idx, visited):
         return False
 
 
-N = int(input())
-aim_ans = 0
-ans = 99999999999
-popularity = list(map(int, input().split()))
-check_set = set(i for i in range(N))
-board = [[0]*N for _ in range(N)]
-for put_in in range(N):
-    line = list(map(int, input().split()))
-    for i in range(1, len(line)):
-        board[put_in][line[i]-1] = 1
-bounty = sum(popularity)
-numset = set()
-combi_list = [i for i in range(N)]
-for making in range(1, ((N+1)//2)+1):
-    numset |= set(itertools.combinations(combi_list, making))
+T = int(input())
+for tc in range(1, T+1):
+    N = int(input())
+    aim_ans = 0
+    ans = 99999999999
 
-while numset:
-    pick = set(numset.pop())
-    subpick = set(pick)
-    start = set(check_set - pick).pop()
-    if rootchecking(start, pick) and rootchecking(subpick.pop(),set(check_set - pick)):
-        temp_value = 0
-        while pick:
-            numbs = pick.pop()
-            temp_value += popularity[numbs]
-        if abs(bounty - (temp_value)*2) < ans:
-            ans = abs(bounty - (temp_value)*2)
-if ans > 999999999:
-    print(-1)
-else:
-    print(ans)
+    check_set = set(i for i in range(N))
+    board = [list(map(int, input().split())) for _ in range(N)]
+    popularity = list(map(int, input().split()))
+    bounty = sum(popularity)
+    numset = set()
+    combi_list = [i for i in range(N)]
+    for making in range(1, ((N+1)//2)+1):
+        numset |= set(itertools.combinations(combi_list, making))
+
+    while numset:
+        pick = set(numset.pop())
+        subpick = set(pick)
+        start = set(check_set - pick).pop()
+        if rootchecking(start, pick) and rootchecking(subpick.pop(),set(check_set - pick)):
+            temp_value = 0
+            while pick:
+                numbs = pick.pop()
+                temp_value += popularity[numbs]
+            if abs(bounty - (temp_value)*2) < ans:
+                ans = abs(bounty - (temp_value)*2)
+    print(f"#{tc} {ans}")
 
 
 """

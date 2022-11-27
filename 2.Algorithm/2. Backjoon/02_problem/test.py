@@ -644,17 +644,38 @@
 #     print(0)
 #     print(0)
 
+#
+#
+#
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+# Queue = []
+# for checking in range(N):
+#     pick = int(input())
+#     if pick == 0:
+#         Queue.pop()
+#     else:
+#         Queue.append(pick)
+# print(sum(Queue))
+
+
+
 
 
 
 import sys
-input = sys.stdin.readline
-N = int(input())
-Queue = []
-for checking in range(N):
-    pick = int(input())
-    if pick == 0:
-        Queue.pop()
-    else:
-        Queue.append(pick)
-print(sum(Queue))
+N, M = map(int, input().split())
+
+pokemon = {}
+for get in range(1, N+1):
+    pick = sys.stdin.readline().strip()
+    pokemon[pick] = str(get)
+    pokemon[str(get)] = pick
+
+for solve in range(M):
+    Q = sys.stdin.readline().strip()
+    print(pokemon[Q])
+
+
+
