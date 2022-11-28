@@ -10,7 +10,6 @@ def solution(reference, track):
         else:
             idx_dict[reference[indexing]] = [indexing, ]
 
-
     for checking in range(N):
         start_set = set(idx_dict[track[checking]])
         while start_set:
@@ -33,6 +32,7 @@ def solution(reference, track):
     print(idx_dict)
     return answer
 
-edges = "abc"
+
+edges = "abca"
 roots = "bcab"
 print(solution(edges, roots))
