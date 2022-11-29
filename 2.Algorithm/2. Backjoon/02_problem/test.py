@@ -663,19 +663,29 @@
 
 
 
+#
+# import sys
+# N, M = map(int, input().split())
+#
+# pokemon = {}
+# for get in range(1, N+1):
+#     pick = sys.stdin.readline().strip()
+#     pokemon[pick] = str(get)
+#     pokemon[str(get)] = pick
+#
+# for solve in range(M):
+#     Q = sys.stdin.readline().strip()
+#     print(pokemon[Q])
+
 
 import sys
-N, M = map(int, input().split())
+input = sys.stdin.readline
+N = int(input())
 
-pokemon = {}
-for get in range(1, N+1):
-    pick = sys.stdin.readline().strip()
-    pokemon[pick] = str(get)
-    pokemon[str(get)] = pick
-
-for solve in range(M):
-    Q = sys.stdin.readline().strip()
-    print(pokemon[Q])
-
-
+fibo = 1
+ans = 1
+while N > fibo:
+    fibo += 6 * ans
+    ans += 1
+print(ans)
 
