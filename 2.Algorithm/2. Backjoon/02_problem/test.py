@@ -677,15 +677,17 @@
 #     Q = sys.stdin.readline().strip()
 #     print(pokemon[Q])
 
+#
+# import sys
+# input = sys.stdin.readline
+# N = int(input())
+#
+# fibo = 1
+# ans = 1
+# while N > fibo:
+#     fibo += 6 * ans
+#     ans += 1
+# print(ans)
 
-import sys
-input = sys.stdin.readline
-N = int(input())
-
-fibo = 1
-ans = 1
-while N > fibo:
-    fibo += 6 * ans
-    ans += 1
-print(ans)
-
+pick = 'abcd'
+print(pick[:1])
