@@ -9,7 +9,7 @@ miss_count = set()
 survive_flag = True
 for shooting in range(1, length + 1):
     zombie = int(sys.stdin.readline().rstrip())
-    if survive_flag:
+    if survive_flag and zombie != 0:
         if miss_count:
             miss_sum = 0
             temp_miss_count = set()
@@ -30,7 +30,7 @@ for shooting in range(1, length + 1):
                 else:
                     survive_flag = False
         else:
-            if gun_range * power < zombie:
+            if gun_range * power <  zombie:
                 if bomb_count > 0:
                     bomb_count -= 1
                     miss_count.add(gun_range-1)
