@@ -30,7 +30,7 @@ for shooting in range(1, length + 1):
                 else:
                     survive_flag = False
         else:
-            if gun_range * power <  zombie:
+            if gun_range * power < zombie:
                 if bomb_count > 0:
                     bomb_count -= 1
                     miss_count.add(gun_range-1)
