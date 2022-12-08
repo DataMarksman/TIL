@@ -36,6 +36,7 @@ for shooting in range(1, length + 1):
                     miss_count.add(gun_range-1)
                 else:
                     survive_flag = False
+
 if survive_flag:
     print("YES")
 else:
