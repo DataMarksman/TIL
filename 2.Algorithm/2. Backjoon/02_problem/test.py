@@ -689,5 +689,15 @@
 #     ans += 1
 # print(ans)
 
-pick = 'abcd'
-print(pick[:1])
+# pick = 'abcd'
+# print(pick[:1])
+
+
+
+
+
+A = [1,2,3,4,5]
+print(A[:-1])
+
+
+
