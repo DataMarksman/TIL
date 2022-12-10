@@ -5,33 +5,42 @@
 # 2. bomb 다 떨어진 상태에서 딜 부족이면 그냥 넘기는게 이득.
 
 # 개선점: 뭔가 다른 방법론으로 하면 더 빠를 것 같은데 모르겠다.
+# def miis(): return map(int,input().split())
 import sys
-length = int(sys.stdin.readline().rstrip())
-gun_range, power = map(int, sys.stdin.readline().rstrip().split())
-bomb_count = int(sys.stdin.readline().rstrip())
+input = lambda: sys.stdin.readline().rstrip('\r\n')
+
+def ii():
+    return int(input())
+
+
+length = int(input())
+gun_range, power = map(int, sys.stdin.readline().split())
+bomb_count = int(sys.stdin.readline())
 miss_count = set()
 survive_flag = True
-basic_attack = gun_range * power
+stop_count = length + 1
 for shooting in range(1, length + 1):
-    zombie = int(sys.stdin.readline().rstrip())
-    if survive_flag and zombie != 0:
-        zombie += power*len(miss_count)
+    if not survive_flag:
+        stop_count = shooting
+        break
+    else:
+        zombie = int(sys.stdin.readline())
+        miss_count.discard(shooting)
         if shooting < gun_range:
-            if shooting * power < zombie:
-                if bomb_count > 0:
-                    bomb_count -= 1
-                    miss_count.add(shooting + gun_range)
-                else:
+            if (shooting - len(miss_count)) * power < zombie:
+                bomb_count -= 1
+                miss_count.add(shooting + gun_range)
+                if bomb_count < 0:
                     survive_flag = False
         else:
-            if basic_attack < zombie:
-                if bomb_count > 0:
-                    bomb_count -= 1
-                    miss_count.add(shooting + gun_range)
-                else:
+            if (gun_range - len(miss_count)) * power < zombie:
+                bomb_count -= 1
+                miss_count.add(shooting + gun_range)
+                if bomb_count < 0:
                     survive_flag = False
-    if shooting in miss_count:
-        miss_count.discard(shooting)
+for dumping in range(stop_count, length + 1):
+    ii()
+
 
 if survive_flag:
     print("YES")

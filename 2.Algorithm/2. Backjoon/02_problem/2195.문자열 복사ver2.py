@@ -8,13 +8,13 @@ original = sys.stdin.readline().rstrip()
 text = sys.stdin.readline().rstrip()
 N = len(original)
 ans = 0
-
+top = 0
 # 제시된 글을 앞에서부터, 찾고자 하는 단어와 매칭 되는 가장 킨 부분을 제거해나아간다.
-while text:
+while top < len(text):
     for greedy in range(N, 0, -1):
-        if text[:greedy] in original:
+        if text[top:top + greedy] in original:
             ans += 1
-            text = text[greedy:]
+            top += greedy
 
             # 제시된 글의 남은 부분이 찾고자 하는 단어보다 작으면 검색 범위를 좁혀준다.
             if len(text) < N:
