@@ -7,43 +7,29 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 
-class Graph:
-    indegree = None
-    def __init__(self, edges, n):
-        self.adjList = [[] for _ in range(n)]
-        self.indegree = [0] * n
-        for (src, dest) in edges:
-            self.adjList[src].append(dest)
-            self.indegree[dest] = self.indegree[dest] + 1
-
-
-def doTopologicalSort(graph, n):
-    L = []
-    indegree = graph.indegree
-    S = deque([i for i in range(n)])
-    while S:
-        n = S.pop()
-        L.append(n+1)
-        for m in graph.adjList[n]:
-            indegree[m] = indegree[m] - 1
-            if indegree[m] == 0:
-                S.append(m)
-    for i in range(n):
-        if indegree[i]:
-            return None
-    return L
-
-
 N, K = map(int, input().split())
-# edges = [set() for _ in range(N+1)]
-# for roots in range(K):
-#     A, B = map(int, input().split())
-#     edges[A].add(B)
-edges = []
-for roots in range(K):
+ans = []
+nords = [set() for _ in range(N+1)]
+nord_dict = {}
+visited = set()
+for get_edges in range(K):
     A, B = map(int, input().split())
-    edges.append((B-1, A-1))
+    nords[B].add(A)
+    nord_dict[A] = B
 
-graph = Graph(edges, N)
-L = doTopologicalSort(graph, N)
-print(*L[::-1][:N])
+queue = []
+for picking in range(1, N+1):
+    if len(nords[picking]) == 0:
+        visited.add(picking)
+        queue.append(picking)
+while len(visited) < N:
+    temp_queue = []
+    while queue:
+        pick = queue.pop(0)
+        ans.append(pick)
+        next_pick = nord_dict[pick]
+        nords[next_pick].discard(pick)
+        if len(nords[next_pick]) == 0:
+            temp_queue.append(next_pick)
+    queue = sorted(temp_queue)
+print(ans)
