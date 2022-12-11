@@ -692,8 +692,10 @@
 # pick = 'abcd'
 # print(pick[:1])
 
-
-
+import sys
+INF = sys.maxsize
+board = [[INF] + [0]*5 + [INF]]
+print(board)
 
 
 
