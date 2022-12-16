@@ -746,12 +746,32 @@
 #
 # print(DP_find(int(input())))
 
+# import sys
+# import heapq
+# input = sys.stdin.readline
+# N = int(input())
+# n = []
+# for g in range(N):
+#     heapq.heappush(n, int(input()))
+# for p in range(N):
+#     print(heapq.heappop(n))
+
+
 import sys
-import heapq
-input = sys.stdin.readline
+input = lambda: sys.stdin.readline().rstrip('\r\n')
 N = int(input())
-n = []
-for g in range(N):
-    heapq.heappush(n, int(input()))
-for p in range(N):
-    print(heapq.heappop(n))
+dp = tuple(map(int, input().split()))
+for checking in range(N-1):
+    A, B, C = map(int, input().split())
+    dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
+print(min(dp))
+
+
+
+
+
+
+
+
+
+

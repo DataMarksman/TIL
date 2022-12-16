@@ -15,11 +15,10 @@ def dfs(x, y, point):
     for direction in range(4):
         px = x + dx[direction]
         py = y + dy[direction]
-        if 0 <= px < N and 0 <= py < M:
-            if board[px][py] not in visited:
-                visited.add(board[px][py])
-                dfs(px, py, point + 1)
-                visited.discard(board[px][py])
+        if 0 <= px < N and 0 <= py < M and board[px][py] not in visited:
+            visited.add(board[px][py])
+            dfs(px, py, point + 1)
+            visited.discard(board[px][py])
 
 
 N, M = map(int, input().split())
