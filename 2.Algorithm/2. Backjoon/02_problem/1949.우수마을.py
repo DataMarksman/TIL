@@ -32,7 +32,7 @@ dp[1] = [dp_list[0], dp_list[1]]
 for check in range(2, len(dp_list)):
     dp[check][1] = dp_list[check] + max(dp[check-1][0], dp[check-2][1])
     dp[check][0] = max(dp[check-1])
-print(dp)
+print(max(max(dp)))
 
 
 
