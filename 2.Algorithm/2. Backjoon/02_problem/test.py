@@ -757,16 +757,19 @@
 #     print(heapq.heappop(n))
 
 
-import sys
-input = lambda: sys.stdin.readline().rstrip('\r\n')
-N = int(input())
-dp = tuple(map(int, input().split()))
-for checking in range(N-1):
-    A, B, C = map(int, input().split())
-    dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
-print(min(dp))
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# dp = tuple(map(int, input().split()))
+# for checking in range(N-1):
+#     A, B, C = map(int, input().split())
+#     dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
+# print(min(dp))
 
-
+from math import ceil
+A = ceil(5.4)
+B = ceil(5//10)
+print(A, B)
 
 
 
