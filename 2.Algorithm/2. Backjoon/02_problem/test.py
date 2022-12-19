@@ -795,26 +795,36 @@
 #             if alp ==
 
 
+#
+# N, M = map(int, input().split())
+# chess = [list(input()) for _ in range(N)]
+# DP_list = [[] for _ in range(N)]
+#
+# for i in range(N):
+#     cnt_1 = 0
+#     cnt_2 = 0
+#     if i % 2 == 0:
+#         check_list = 'WB'*((M//2)+1)
+#     else:
+#         check_list = 'BW' * ((M // 2) + 1)
+#     for first_check in range(8):
+#         if chess[i][first_check] == check_list[check]:
+#             cnt_1 += 1
+#         else:
+#             cnt_2 += 1
+#     for check in range(M):
+#
+# print(cnt_1, cnt_2)
+# print(min(cnt_1, cnt_2))
+# sys.stdout.write()
 
-N, M = map(int, input().split())
-chess = [list(input()) for _ in range(N)]
-DP_list = [[] for _ in range(N)]
 
-for i in range(N):
-    cnt_1 = 0
-    cnt_2 = 0
-    if i % 2 == 0:
-        check_list = 'WB'*((M//2)+1)
-    else:
-        check_list = 'BW' * ((M // 2) + 1)
-    for first_check in range(8):
-        if chess[i][first_check] == check_list[check]:
-            cnt_1 += 1
-        else:
-            cnt_2 += 1
-    for check in range(M):
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# str_list = sorted(list({input().rstrip() for _ in range(N)}), key=lambda x: (len(x), x))
+# for printing in range(len(str_list)):
+#     print(str_list[printing])
 
-print(cnt_1, cnt_2)
-print(min(cnt_1, cnt_2))
-
-
+print(ord("A"))
+print(ord("Z"))
