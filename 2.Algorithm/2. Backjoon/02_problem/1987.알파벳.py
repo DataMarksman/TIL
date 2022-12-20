@@ -16,7 +16,7 @@ def dfs(x, y, point):
     for direction in range(4):
         px = x + dx[direction]
         py = y + dy[direction]
-        if alp_dict.get((px, py)) and visited[alp_dict[(px, py)]] == 0:
+        if 0 <= px < N and 0 <= py < M and visited[alp_dict[(px, py)]] == 0:
             visited[alp_dict[(px, py)]] = 1
             dfs(px, py, point + 1)
             visited[alp_dict[(px, py)]] = 0
