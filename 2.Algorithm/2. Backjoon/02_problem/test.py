@@ -826,5 +826,23 @@
 # for printing in range(len(str_list)):
 #     print(str_list[printing])
 
-print(ord("A"))
-print(ord("Z"))
+
+
+
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+#
+
+#
+# N, Goal = map(int, input().split())
+# num_list = [int(input()) for _ in range(N)]
+# pre_ans = 0
+# top = 0
+# while True:
+#     top += 1
+#     temp_get = find_ans(top)
+#     if pre_ans == Goal and temp_get < pre_ans:
+#         break
+#     pre_ans = int(temp_get)
+# print(top-1)
