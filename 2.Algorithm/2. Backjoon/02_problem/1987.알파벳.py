@@ -3,10 +3,10 @@
 # 개선점:
 import sys
 sys.setrecursionlimit(10**4)
-input = sys.stdin.readline
+input = lambda: sys.stdin.readline().rstrip('\r\n')
 
-dx = [0, 1, -1, 0]
-dy = [1, 0, 0, -1]
+dx = [0, 1, 0, -1]
+dy = [1, 0, -1, 0]
 
 
 def dfs(x, y, point):
@@ -16,20 +16,22 @@ def dfs(x, y, point):
     for direction in range(4):
         px = x + dx[direction]
         py = y + dy[direction]
-        if 0 <= px < N and 0 <= py < M and visited[alp_dict[(px, py)]] == 0:
-            visited[alp_dict[(px, py)]] = 1
+        if visited[alp_list[px][py]] == 0:
+            visited[alp_list[px][py]] = 1
             dfs(px, py, point + 1)
-            visited[alp_dict[(px, py)]] = 0
+            visited[alp_list[px][py]] = 0
 
 
 N, M = map(int, input().split())
-alp_dict = {}
+alp_list = [[26]*(M+2)]
 for alp_x in range(N):
     line = list(input())
     for alp_y in range(M):
-        alp_dict[(alp_x, alp_y)] = ord(line[alp_y])-65
-visited = [0]*26
-visited[alp_dict[(0, 0)]] = 1
+        line[alp_y] = ord(line[alp_y])-65
+    alp_list += [[26] + line + [26]]
+alp_list += [[26]*(M+2)]
+visited = [0]*26 + [1]
+visited[alp_list[1][1]] = 1
 ans = 0
-dfs(0, 0, 1)
+dfs(1, 1, 1)
 print(ans)
