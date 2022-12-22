@@ -15,9 +15,7 @@ def sudoku(start_x, start_y):
         for X in range(start_x, 9):
             for Y in range(start_y, 9):
                 if board[X][Y] == '0':
-                    pick_list = sorted(original_set - row_set[X] - col_set[Y] - box_set[(numbers//3)+(get_numbers//3)*3])
-                    print(X, Y)
-                    print(pick_list)
+                    pick_list = sorted(original_set - row_set[X] - col_set[Y] - box_set[(Y//3)+(X//3)*3])
                     if pick_list:
                         for check in range(len(pick_list)):
                             board[X][Y] = pick_list[check]
@@ -30,6 +28,8 @@ def sudoku(start_x, start_y):
                                 row_set[X].discard(pick_list[check])
                                 col_set[Y].discard(pick_list[check])
                                 box_set[(Y // 3) + (X // 3) * 3].discard(pick_list[check])
+                            else:
+                                return
                         else:
                             return
                     else:
@@ -53,7 +53,6 @@ for get_numbers in range(9):
             col_set[numbers].add(line[numbers])
             box_set[(numbers//3)+(get_numbers//3)*3].add(line[numbers])
             board[get_numbers][numbers] = line[numbers]
-print(box_set)
 sudoku(0, 0)
 for printing in range(9):
     print(''.join(board[printing]))
