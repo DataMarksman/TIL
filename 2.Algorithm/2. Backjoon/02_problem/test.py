@@ -846,3 +846,12 @@
 #         break
 #     pre_ans = int(temp_get)
 # print(top-1)
+
+import sys
+input = lambda: sys.stdin.readline().rstrip('\r\n')
+import heapq
+Q = []
+for i in range(int(input())):
+    heapq.heappush(Q, int(input()))
+while Q:
+    print(heapq.heappop(Q))
