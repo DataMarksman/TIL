@@ -847,11 +847,37 @@
 #     pre_ans = int(temp_get)
 # print(top-1)
 
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# import heapq
+# Q = []
+# for i in range(int(input())):
+#     heapq.heappush(Q, int(input()))
+# while Q:
+#     print(heapq.heappop(Q))
+#
+#
+#
+# new_list = list(map(list, zip(*mylist)))
+
 import sys
 input = lambda: sys.stdin.readline().rstrip('\r\n')
-import heapq
-Q = []
-for i in range(int(input())):
-    heapq.heappush(Q, int(input()))
+N = int(input())
+tree_list = [[] for _ in range(N+1)]
+ans_list = [0]*(N+1)
+for _ in range(N-1):
+    s, e = map(int, input().split())
+    tree_list[s].append(e)
+    tree_list[e].append(s)
+Q = [1]
+visited = set()
 while Q:
-    print(heapq.heappop(Q))
+    pick = Q.pop(0)
+    if pick not in visited:
+        visited.add(pick)
+        for numbers in tree_list[pick]:
+            if ans_list[numbers] == 0:
+                ans_list[numbers] = pick
+                Q.append(numbers)
+for i in range(2, N+1):
+    print(ans_list[i])

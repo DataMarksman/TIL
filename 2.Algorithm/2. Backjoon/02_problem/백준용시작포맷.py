@@ -3,7 +3,7 @@
 # 개선점:
 import sys
 # sys.setrecursionlimit(10**6)
-input = sys.stdin.readline
+input = lambda: sys.stdin.readline().rstrip('\r\n')
 N = int(input())
 num_list = list(map(int, input().split()))
 
