@@ -860,24 +860,104 @@
 #
 # new_list = list(map(list, zip(*mylist)))
 
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# tree_list = [[] for _ in range(N+1)]
+# ans_list = [0]*(N+1)
+# for _ in range(N-1):
+#     s, e = map(int, input().split())
+#     tree_list[s].append(e)
+#     tree_list[e].append(s)
+# Q = [1]
+# visited = set()
+# while Q:
+#     pick = Q.pop(0)
+#     if pick not in visited:
+#         visited.add(pick)
+#         for numbers in tree_list[pick]:
+#             if ans_list[numbers] == 0:
+#                 ans_list[numbers] = pick
+#                 Q.append(numbers)
+# for i in range(2, N+1):
+#     print(ans_list[i])
+#
+#
+
+# import sys
+#
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# board = [list(input().split()) for _ in range(N)]
+#
+# DP = [[['0', '0'] for _ in range(N)] for _ in range(N)]
+# DP[0][0] = [board[0][0], board[0][0]]
+# for x in range(N):
+#     for y in range(N):
+#         if not (x+y) % 2:
+#             temp_ans = []
+#             if x-1 >= 0:
+#                 if x-2 >= 0:
+#                     temp_ans.append(eval(DP[x-2][y][0]+board[x-1][y]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 2][y][1] + board[x - 1][y] + board[x][y]))
+#                 if y-1 >= 0:
+#                     temp_ans.append(eval(DP[x-1][y-1][0]+board[x-1][y]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 1][y - 1][1]+ board[x - 1][y] + board[x][y]))
+#             if y-1 >= 0:
+#                 if y-2 >= 0:
+#                     temp_ans.append(eval(DP[x][y-2][0]+board[x][y-1]+board[x][y]))
+#                     temp_ans.append(eval(DP[x][y - 2][1]+ board[x][y - 1] + board[x][y] ))
+#                 if x-1 >= 0:
+#                     temp_ans.append(eval(DP[x-1][y-1][0]+board[x][y-1]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 1][y - 1][1]+ board[x][y - 1] + board[x][y] ))
+#             if temp_ans:
+#                 DP[x][y] = [str(max(temp_ans)), str(min(temp_ans))]
+# print(*DP[N-1][N-1])
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# orchard = [list(map(int, input().split())) for _ in range(N)]
+# prefix_sum = [[0]*(N+1) for _ in range(N+1)]
+# ans = -1001
+#
+# for i in range(N):
+#     for j in range(N):
+#         prefix_sum[i+1][j+1] = orchard[i][j]+prefix_sum[i][j+1]+prefix_sum[i+1][j]-prefix_sum[i][j]
+#
+# for k in range(N, 0, -1):
+#     for r in range(N, k-1, -1):
+#         for c in range(N, k-1, -1):
+#             if prefix_sum[r][c]+prefix_sum[r-k][c-k]-prefix_sum[r][c-k]-prefix_sum[r-k][c] > ans:
+#                 ans = prefix_sum[r][c]+prefix_sum[r-k][c-k]-prefix_sum[r][c-k]-prefix_sum[r-k][c]
+#
+# print(ans)
+
+
 import sys
 input = lambda: sys.stdin.readline().rstrip('\r\n')
-N = int(input())
-tree_list = [[] for _ in range(N+1)]
-ans_list = [0]*(N+1)
-for _ in range(N-1):
-    s, e = map(int, input().split())
-    tree_list[s].append(e)
-    tree_list[e].append(s)
-Q = [1]
-visited = set()
-while Q:
-    pick = Q.pop(0)
-    if pick not in visited:
-        visited.add(pick)
-        for numbers in tree_list[pick]:
-            if ans_list[numbers] == 0:
-                ans_list[numbers] = pick
-                Q.append(numbers)
-for i in range(2, N+1):
-    print(ans_list[i])
+
+
+def move(x, y):
+    if x == 0:
+        return 2
+    else:
+        return move_list[abs(x-y)]
+
+
+MAX = sys.maxsize
+command = list(map(int, input().split()))
+dp = [[[MAX for _ in range(5)] for _ in range(5)] for _ in range(len(command))]
+dp[0][0][0] = 0
+move_list = [1, 3, 4, 3]
+for k in range(len(command)-1):
+    next = command[k]
+    for i in range(5):
+        for j in range(5):
+            dp[k+1][next][j] = min(dp[k+1][next][j], dp[k][i][j]+move(i, next))
+            dp[k+1][i][next] = min(dp[k+1][i][next], dp[k][i][j]+move(j, next))
+ans = MAX
+for i in dp[len(command)-1]:
+    for j in i:
+        ans = min(ans, j)
+print(ans)
+
