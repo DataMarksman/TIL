@@ -16,6 +16,6 @@ def solution(today, terms, privacies):
             cus_month -= 12
         if int(''.join(str(cus_year) + str(cus_month) + cus_date)) <= int(today.replace(',', '')):
             answer.append(checking+1)
-            
+
 
 print(solution('2016.11.13', ))

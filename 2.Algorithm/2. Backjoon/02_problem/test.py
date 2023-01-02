@@ -1,4 +1,4 @@
-
+import math
 
 # M = 8
 # batch_set = set()
@@ -112,6 +112,43 @@
 # for i in range(13):
 #     ans_list.append(sum(month_count[:i]))
 # print(ans_list)
+<<<<<<< HEAD
+#
+#
+# A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
+# print(B)
+
+import sys
+input = sys.stdin.readline
+def dfs_topol(start, price):
+    global edge_list
+    global ans_list
+    if ans_list[start] < price:
+        ans_list[start] = price
+    else:
+        price = ans_list[start]
+    if not edge_list[start]:
+        for rooting in range(1, N + 1):
+            if start in edge_list[rooting]:
+                edge_list[rooting].remove(start)
+                dfs_topol(rooting, price])
+
+
+N, M = int(input())
+edge_list = [set() for _ in range(N+1)]
+ans_list = [0] * (N + 1)
+for put_in in range(1, M + 1):
+    A, B = map(int, input().split())
+    edge_list[A] |= { B, }
+stack = set()
+for checking in range(1, N + 1):
+    if not edge_list[checking]:
+        stack.add(checking)
+while stack:
+    pick = stack.pop()
+    dfs_topol(pick, time_list[pick])
+print(ans_list)
+=======
 # list_A = [0]*7
 # A, B, C = map(int, input().split())
 # list_A[A] += 1
@@ -766,6 +803,7 @@
 #     dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
 # print(min(dp))
 #
+<<<<<<< HEAD
 
 
 # import sys
@@ -793,8 +831,201 @@
 #     print(ans_list[printing])
 
 
+=======
+# from math import ceil
+# A = ceil(5.4)
+# B = ceil(5//10)
+# print(A, B)
+#
+#
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# def sol(k):
+#     print(sorted(list(map(int, input().split())), reverse=True)[int(k)-1])
+# sol(input().split()[1])
+#
+
+#
+# N, M = map(int, input().split())
+# A = 0
+# B = 0
+# if M % 2 == 0:
+#     for l in range(N):
+#         for alp in input():
+#             if alp ==
+
+
+#
+# N, M = map(int, input().split())
+# chess = [list(input()) for _ in range(N)]
+# DP_list = [[] for _ in range(N)]
+#
+# for i in range(N):
+#     cnt_1 = 0
+#     cnt_2 = 0
+#     if i % 2 == 0:
+#         check_list = 'WB'*((M//2)+1)
+#     else:
+#         check_list = 'BW' * ((M // 2) + 1)
+#     for first_check in range(8):
+#         if chess[i][first_check] == check_list[check]:
+#             cnt_1 += 1
+#         else:
+#             cnt_2 += 1
+#     for check in range(M):
+#
+# print(cnt_1, cnt_2)
+# print(min(cnt_1, cnt_2))
+# sys.stdout.write()
+
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# str_list = sorted(list({input().rstrip() for _ in range(N)}), key=lambda x: (len(x), x))
+# for printing in range(len(str_list)):
+#     print(str_list[printing])
 
 
 
 
 
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+#
+
+#
+# N, Goal = map(int, input().split())
+# num_list = [int(input()) for _ in range(N)]
+# pre_ans = 0
+# top = 0
+# while True:
+#     top += 1
+#     temp_get = find_ans(top)
+#     if pre_ans == Goal and temp_get < pre_ans:
+#         break
+#     pre_ans = int(temp_get)
+# print(top-1)
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# import heapq
+# Q = []
+# for i in range(int(input())):
+#     heapq.heappush(Q, int(input()))
+# while Q:
+#     print(heapq.heappop(Q))
+#
+#
+#
+# new_list = list(map(list, zip(*mylist)))
+
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# tree_list = [[] for _ in range(N+1)]
+# ans_list = [0]*(N+1)
+# for _ in range(N-1):
+#     s, e = map(int, input().split())
+#     tree_list[s].append(e)
+#     tree_list[e].append(s)
+# Q = [1]
+# visited = set()
+# while Q:
+#     pick = Q.pop(0)
+#     if pick not in visited:
+#         visited.add(pick)
+#         for numbers in tree_list[pick]:
+#             if ans_list[numbers] == 0:
+#                 ans_list[numbers] = pick
+#                 Q.append(numbers)
+# for i in range(2, N+1):
+#     print(ans_list[i])
+#
+#
+
+# import sys
+#
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# board = [list(input().split()) for _ in range(N)]
+#
+# DP = [[['0', '0'] for _ in range(N)] for _ in range(N)]
+# DP[0][0] = [board[0][0], board[0][0]]
+# for x in range(N):
+#     for y in range(N):
+#         if not (x+y) % 2:
+#             temp_ans = []
+#             if x-1 >= 0:
+#                 if x-2 >= 0:
+#                     temp_ans.append(eval(DP[x-2][y][0]+board[x-1][y]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 2][y][1] + board[x - 1][y] + board[x][y]))
+#                 if y-1 >= 0:
+#                     temp_ans.append(eval(DP[x-1][y-1][0]+board[x-1][y]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 1][y - 1][1]+ board[x - 1][y] + board[x][y]))
+#             if y-1 >= 0:
+#                 if y-2 >= 0:
+#                     temp_ans.append(eval(DP[x][y-2][0]+board[x][y-1]+board[x][y]))
+#                     temp_ans.append(eval(DP[x][y - 2][1]+ board[x][y - 1] + board[x][y] ))
+#                 if x-1 >= 0:
+#                     temp_ans.append(eval(DP[x-1][y-1][0]+board[x][y-1]+board[x][y]))
+#                     temp_ans.append(eval(DP[x - 1][y - 1][1]+ board[x][y - 1] + board[x][y] ))
+#             if temp_ans:
+#                 DP[x][y] = [str(max(temp_ans)), str(min(temp_ans))]
+# print(*DP[N-1][N-1])
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# orchard = [list(map(int, input().split())) for _ in range(N)]
+# prefix_sum = [[0]*(N+1) for _ in range(N+1)]
+# ans = -1001
+#
+# for i in range(N):
+#     for j in range(N):
+#         prefix_sum[i+1][j+1] = orchard[i][j]+prefix_sum[i][j+1]+prefix_sum[i+1][j]-prefix_sum[i][j]
+#
+# for k in range(N, 0, -1):
+#     for r in range(N, k-1, -1):
+#         for c in range(N, k-1, -1):
+#             if prefix_sum[r][c]+prefix_sum[r-k][c-k]-prefix_sum[r][c-k]-prefix_sum[r-k][c] > ans:
+#                 ans = prefix_sum[r][c]+prefix_sum[r-k][c-k]-prefix_sum[r][c-k]-prefix_sum[r-k][c]
+#
+# print(ans)
+
+
+import sys
+input = lambda: sys.stdin.readline().rstrip('\r\n')
+>>>>>>> 87336fc2d248cdff1715e5f42ed7531a19b206ab
+
+
+def move(x, y):
+    if x == 0:
+        return 2
+    else:
+        return move_list[abs(x-y)]
+
+
+MAX = sys.maxsize
+command = list(map(int, input().split()))
+dp = [[[MAX for _ in range(5)] for _ in range(5)] for _ in range(len(command))]
+dp[0][0][0] = 0
+move_list = [1, 3, 4, 3]
+for k in range(len(command)-1):
+    next = command[k]
+    for i in range(5):
+        for j in range(5):
+            dp[k+1][next][j] = min(dp[k+1][next][j], dp[k][i][j]+move(i, next))
+            dp[k+1][i][next] = min(dp[k+1][i][next], dp[k][i][j]+move(j, next))
+ans = MAX
+for i in dp[len(command)-1]:
+    for j in i:
+        ans = min(ans, j)
+print(ans)
+
+>>>>>>> bacee4785edf0199691f2ee059ee1ae41a061f34
