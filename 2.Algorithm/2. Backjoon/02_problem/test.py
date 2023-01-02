@@ -757,17 +757,40 @@
 #     print(heapq.heappop(n))
 
 
-import sys
-input = lambda: sys.stdin.readline().rstrip('\r\n')
-N = int(input())
-dp = tuple(map(int, input().split()))
-for checking in range(N-1):
-    A, B, C = map(int, input().split())
-    dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
-print(min(dp))
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# N = int(input())
+# dp = tuple(map(int, input().split()))
+# for checking in range(N-1):
+#     A, B, C = map(int, input().split())
+#     dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
+# print(min(dp))
+#
 
 
-
+# import sys
+# from collections import deque
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+#
+# N = int(input())
+# tree_list = [[0]*(N+1) for _ in range(N+1)]
+# ans_list = [0]*(N+1)
+# for _ in range(N-1):
+#     s, e = map(int, input().split())
+#     tree_list[s][e] = 1
+#     tree_list[e][s] = 1
+#
+# visited = {1}
+# Q = deque(visited)
+# while len(visited) < N:
+#     pick = Q.popleft()
+#     for check in range(1, N+1):
+#         if tree_list[pick][check] == 1 and check not in visited:
+#             visited.add(check)
+#             Q.append(check)
+#             ans_list[check] = pick
+# for printing in range(2, N+1):
+#     print(ans_list[printing])
 
 
 
