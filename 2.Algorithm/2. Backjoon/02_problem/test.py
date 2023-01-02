@@ -117,4 +117,33 @@ import math
 # A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
 # print(B)
 
-print(math.ceil(3.0))0
+import sys
+input = sys.stdin.readline
+def dfs_topol(start, price):
+    global edge_list
+    global ans_list
+    if ans_list[start] < price:
+        ans_list[start] = price
+    else:
+        price = ans_list[start]
+    if not edge_list[start]:
+        for rooting in range(1, N + 1):
+            if start in edge_list[rooting]:
+                edge_list[rooting].remove(start)
+                dfs_topol(rooting, price])
+
+
+N, M = int(input())
+edge_list = [set() for _ in range(N+1)]
+ans_list = [0] * (N + 1)
+for put_in in range(1, M + 1):
+    A, B = map(int, input().split())
+    edge_list[A] |= { B, }
+stack = set()
+for checking in range(1, N + 1):
+    if not edge_list[checking]:
+        stack.add(checking)
+while stack:
+    pick = stack.pop()
+    dfs_topol(pick, time_list[pick])
+print(ans_list)
