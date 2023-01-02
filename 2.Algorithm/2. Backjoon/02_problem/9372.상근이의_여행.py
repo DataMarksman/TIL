@@ -15,10 +15,9 @@
 #         lines = tuple(map(int, input().split()))
 #         A = lines[0]
 #         B = lines[1]
-
-T = int(input())
-for tc in range(1, T + 1):
-    N, M = tuple(map(int, input().split()))
-    for erase in range(M):
-        line = tuple(map(int, input().split()))
+import sys
+for tc in range(1, int(sys.stdin.readline()) + 1):
+    N, M = map(int, sys.stdin.readline().split())
+    for A in range(M):
+        map(int, sys.stdin.readline().split())
     print(N - 1)

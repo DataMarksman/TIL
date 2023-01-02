@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>수동 카운터</h2>
+  <p class="p1">0</p>
+  <button class="plusOne">하나씩 카운트</button>
+  <hr>
+
+
+  <script>
+    // 수동 카운터 구현
+    const pTag1 = document.querySelector('.p1')
+    const plusOne = document.querySelector('.pluseOl')
+    const plus = function () {
+      let cnt = parseInt(pTag1.innerText)
+      cnt ++
+      pTag1.innerText = cnt
+    }
+    plusOne.addEventListener('click', plus)
+
+  </script>
+</body>
+</html>

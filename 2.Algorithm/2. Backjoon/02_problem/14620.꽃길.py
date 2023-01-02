@@ -58,3 +58,14 @@ for i in range(len(location)-2):
         for k in range(j+1, len(location)):
             flowering([i, j, k])
 print(min_price)
+
+"""
+6
+2 2 2 2 2 2
+2 2 2 2 2 2
+2 2 1 1 1 2
+2 2 1 1 1 2
+2 2 1 1 1 2
+2 2 2 2 2 2
+
+"""

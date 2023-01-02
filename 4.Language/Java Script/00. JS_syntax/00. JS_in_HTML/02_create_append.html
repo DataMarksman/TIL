@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div></div>
+  
+  <script>
+    // 태그 생성
+    const h1Tag = document.createElement('h1')
+    // h1Tag
+    h1Tag.innerText = "DOM 조작"
+    // h1Tag
+    
+    // div 지정. 내가 어디에 뭘 할건지 지정해줘야 함
+    divTag = document.querySelector('div')
+    // div 사이에 만들기
+    divTag.appendChild(h1Tag)
+    // div 사이에 만들어 놓은 것 지우기
+    divTag.removeChild(h1Tag)
+  </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Document</title>
+  <link rel="stylesheet" href="./colors_skeleton.css">
+</head>
+
+<body>
+  <ul class="switcher">
+    <li id="grayButton"></li>
+    <li id="whiteButton"></li>
+    <li id="navyButton"></li>
+  </ul>
+
+  <h1>Theme Switcher</h1>
+
+  <p>테마를 바꿔봅시다.</p>
+
+  <script>
+    const gray = document.querySelector('#grayButton')
+    const white = document.querySelector("#whiteButton")
+    const navy = document.querySelector('#navyButton')
+    const h1Tag = document.querySelector('h1')
+    const pTag = document.querySelector('p')
+    const body_color = document.querySelector('body')
+    gray.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "gray"
+      body_color.style.color = "white"
+    })
+    white.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "white"
+      body_color.style.color = "navy"
+    })
+    navy.addEventListener('click', function(event) {
+      body_color.style.backgroundColor = "navy"
+      body_color.style.color = "white"
+    })
+  
+  </script>
+</body>
+
+</html>
