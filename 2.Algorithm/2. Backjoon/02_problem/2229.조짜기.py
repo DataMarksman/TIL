@@ -17,3 +17,5 @@ else:
         DP[x][1] = max(max(DP[x-1][0], DP[x-2]) + abs(board[x]-board[x-1]), DP[x-2][0] + abs(board[x]-board[x-2]))
     print(max(max(DP[N-1]), max(DP[N-2])))
 
+
+
