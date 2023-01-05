@@ -6,56 +6,41 @@
 
 # 개선점:
 
-<<<<<<< HEAD
-def solution(    ):
-
-    answer = ''
-    return answer
-
-
-=======
->>>>>>> edba400304a7b7d9432cde243c295e8576769def
 import sys
 input = sys.stdin.readline
 import heapq
 
 
-<<<<<<< HEAD
-=======
 def solution(program):
     answer = [0] * 11
-    program.sort(key=lambda x: (x[1], x[0]))
+    # 자료의 구성은 (점수, 호출 시각, 실행 시간) 순으로 구성된다.
+    # program.sort(key=lambda x: (x[1], x[0]))
 
     Q = []
     for get_heap in range(len(program)):
-        re_arrange = (program[get_heap][1], program[get_heap][0], program[get_heap][2], get_heap)
-        heapq.heappush(Q, re_arrange)
+        # 이러한 자료를 다시 (호출 시각, 점수, 실행 시간) 순으로 바꿔서 heapQ 로 올려준다.
+        heapq.heappush(Q, (program[get_heap][1], program[get_heap][0], program[get_heap][2]))
+
     taskQ = []
     time = 0
     while Q or taskQ:
         if not taskQ:
             pick = heapq.heappop(Q)
             time = max(pick[0], time)
-            heapq.heappush(taskQ, (pick[1], pick[0], pick[2], pick[3]))
+            heapq.heappush(taskQ, (pick[1], pick[0], pick[2]))
 
-            while Q and Q[0][0] <= time:
-                pick = heapq.heappop(Q)
-                heapq.heappush(taskQ, (pick[1], pick[0], pick[2], pick[3]))
+        while Q and Q[0][0] <= time:
+            pick = heapq.heappop(Q)
+            heapq.heappush(taskQ, (pick[1], pick[0], pick[2]))
         heap_pop = heapq.heappop(taskQ)
-        if time > heap_pop[0]:
-            answer[heap_pop[3]] = time - heap_pop[0]
+        answer[heap_pop[0]] += time - heap_pop[1]
         time += heap_pop[2]
-        time += 1
-
     return answer
 
 
-
-
-
-
-
->>>>>>> edba400304a7b7d9432cde243c295e8576769def
+program = [[2, 0, 10], [1, 5, 5], [3, 5, 3], [3, 12, 2]]
+print(solution(program))
+"""
 v, e = map(int, input().split())
 # 모든 노드에 대한 진입차수는 0으로 초기화
 indegree = [0] * (v + 1)
@@ -100,3 +85,4 @@ def topology_sort():
         print(0)
 
 topology_sort()
+"""
