@@ -33,6 +33,7 @@ def solution(program):
             pick = heapq.heappop(Q)
             heapq.heappush(taskQ, (pick[1], pick[0], pick[2]))
         heap_pop = heapq.heappop(taskQ)
+        print(heap_pop)
         answer[heap_pop[0]] += time - heap_pop[1]
         time += heap_pop[2]
     return answer
