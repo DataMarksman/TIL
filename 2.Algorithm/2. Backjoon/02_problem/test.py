@@ -116,39 +116,39 @@ import math
 #
 #
 # A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
-# print(B)
-
-import sys
-input = sys.stdin.readline
-def dfs_topol(start, price):
-    global edge_list
-    global ans_list
-    if ans_list[start] < price:
-        ans_list[start] = price
-    else:
-        price = ans_list[start]
-    if not edge_list[start]:
-        for rooting in range(1, N + 1):
-            if start in edge_list[rooting]:
-                edge_list[rooting].remove(start)
-                dfs_topol(rooting, price])
-
-
-N, M = int(input())
-edge_list = [set() for _ in range(N+1)]
-ans_list = [0] * (N + 1)
-for put_in in range(1, M + 1):
-    A, B = map(int, input().split())
-    edge_list[A] |= { B, }
-stack = set()
-for checking in range(1, N + 1):
-    if not edge_list[checking]:
-        stack.add(checking)
-while stack:
-    pick = stack.pop()
-    dfs_topol(pick, time_list[pick])
-print(ans_list)
-=======
+# # print(B)
+#
+# import sys
+# input = sys.stdin.readline
+# def dfs_topol(start, price):
+#     global edge_list
+#     global ans_list
+#     if ans_list[start] < price:
+#         ans_list[start] = price
+#     else:
+#         price = ans_list[start]
+#     if not edge_list[start]:
+#         for rooting in range(1, N + 1):
+#             if start in edge_list[rooting]:
+#                 edge_list[rooting].remove(start)
+#                 dfs_topol(rooting, price])
+#
+#
+# N, M = int(input())
+# edge_list = [set() for _ in range(N+1)]
+# ans_list = [0] * (N + 1)
+# for put_in in range(1, M + 1):
+#     A, B = map(int, input().split())
+#     edge_list[A] |= { B, }
+# stack = set()
+# for checking in range(1, N + 1):
+#     if not edge_list[checking]:
+#         stack.add(checking)
+# while stack:
+#     pick = stack.pop()
+#     dfs_topol(pick, time_list[pick])
+# print(ans_list)
+# =======
 # list_A = [0]*7
 # A, B, C = map(int, input().split())
 # list_A[A] += 1
@@ -998,34 +998,60 @@ print(ans_list)
 #
 # print(ans)
 
+#
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+# >>>>>>> 87336fc2d248cdff1715e5f42ed7531a19b206ab
+#
+#
+# def move(x, y):
+#     if x == 0:
+#         return 2
+#     else:
+#         return move_list[abs(x-y)]
+#
+#
+# MAX = sys.maxsize
+# command = list(map(int, input().split()))
+# dp = [[[MAX for _ in range(5)] for _ in range(5)] for _ in range(len(command))]
+# dp[0][0][0] = 0
+# move_list = [1, 3, 4, 3]
+# for k in range(len(command)-1):
+#     next = command[k]
+#     for i in range(5):
+#         for j in range(5):
+#             dp[k+1][next][j] = min(dp[k+1][next][j], dp[k][i][j]+move(i, next))
+#             dp[k+1][i][next] = min(dp[k+1][i][next], dp[k][i][j]+move(j, next))
+# ans = MAX
+# for i in dp[len(command)-1]:
+#     for j in i:
+#         ans = min(ans, j)
+# print(ans)
+#
+# >>>>>>> bacee4785edf0199691f2ee059ee1ae41a061f34
+
 
 import sys
 input = lambda: sys.stdin.readline().rstrip('\r\n')
->>>>>>> 87336fc2d248cdff1715e5f42ed7531a19b206ab
 
+day, rc = map(int, input().split())
+# 30일의 패턴을 구함
+day_list = [[1, 0], [0, 1], [1, 1]] + [[0, 0] for _ in range(27)]
 
-def move(x, y):
-    if x == 0:
-        return 2
+for i in range(3, day):
+    day_list[i][0] = day_list[i-1][1]
+    day_list[i][1] = day_list[i-1][0] + day_list[i-1][1]
+
+# 우선 A, B 값을 1로 두고
+A = 1
+B = 1
+
+while True:
+    if (rc - day_list[day-1][0] * A) % day_list[day-1][1] == 0:
+        B = (rc - day_list[day-1][0] * A) // day_list[day-1][1]
+        break
     else:
-        return move_list[abs(x-y)]
+        A += 1
 
-
-MAX = sys.maxsize
-command = list(map(int, input().split()))
-dp = [[[MAX for _ in range(5)] for _ in range(5)] for _ in range(len(command))]
-dp[0][0][0] = 0
-move_list = [1, 3, 4, 3]
-for k in range(len(command)-1):
-    next = command[k]
-    for i in range(5):
-        for j in range(5):
-            dp[k+1][next][j] = min(dp[k+1][next][j], dp[k][i][j]+move(i, next))
-            dp[k+1][i][next] = min(dp[k+1][i][next], dp[k][i][j]+move(j, next))
-ans = MAX
-for i in dp[len(command)-1]:
-    for j in i:
-        ans = min(ans, j)
-print(ans)
-
->>>>>>> bacee4785edf0199691f2ee059ee1ae41a061f34
+print(A)
+print(B)
