@@ -7,13 +7,13 @@
 # 개선점:
 
 
-
+from itertools import permutations
 
 def solution(k, dungeons):
-    dungeons = sorted(dungeons, reverse=True)
+    dungeons = sorted(dungeons, key=lambda x:(x[1], -x[0]))
     length = len(dungeons)
-    print(dungeons)
-    print(length)
+    # print(dungeons)
+    # print(length)
     def recur(HP, idx, clear_count):
         nonlocal answer
         print(HP, idx, clear_count)
@@ -24,7 +24,6 @@ def solution(k, dungeons):
             if HP >= dungeons[idx][0]:
                 recur(HP - dungeons[idx][1], idx + 1, clear_count + 1)
             recur(HP, idx + 1, clear_count)
-
     answer = -1
     recur(k, 0, 0)
     return answer
