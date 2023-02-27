@@ -112,7 +112,6 @@ import math
 # for i in range(13):
 #     ans_list.append(sum(month_count[:i]))
 # print(ans_list)
-<<<<<<< HEAD
 #
 #
 # A = [[1, 2, 3], [1, 1, 1], [2, 2, 2]]
@@ -803,7 +802,6 @@ import math
 #     dp = (min(dp[1], dp[2]) + A, min(dp[0], dp[2]) + B, min(dp[0], dp[1]) + C)
 # print(min(dp))
 #
-<<<<<<< HEAD
 
 
 # import sys
@@ -829,9 +827,6 @@ import math
 #             ans_list[check] = pick
 # for printing in range(2, N+1):
 #     print(ans_list[printing])
-
-
-=======
 # from math import ceil
 # A = ceil(5.4)
 # B = ceil(5//10)
@@ -1030,28 +1025,48 @@ import math
 #
 # >>>>>>> bacee4785edf0199691f2ee059ee1ae41a061f34
 
+#
+# import sys
+# input = lambda: sys.stdin.readline().rstrip('\r\n')
+#
+# day, rc = map(int, input().split())
+# # 30일의 패턴을 구함
+# day_list = [[1, 0], [0, 1], [1, 1]] + [[0, 0] for _ in range(27)]
+#
+# for i in range(3, day):
+#     day_list[i][0] = day_list[i-1][1]
+#     day_list[i][1] = day_list[i-1][0] + day_list[i-1][1]
+#
+# # 우선 A, B 값을 1로 두고
+# A = 1
+# B = 1
+#
+# while True:
+#     if (rc - day_list[day-1][0] * A) % day_list[day-1][1] == 0:
+#         B = (rc - day_list[day-1][0] * A) // day_list[day-1][1]
+#         break
+#     else:
+#         A += 1
+#
+# print(A)
+# print(B)
+
+
+
+
+
 
 import sys
-input = lambda: sys.stdin.readline().rstrip('\r\n')
+input = sys.stdin.readline
+length, multi = map(int, input().split())
+virus = list(map(int, input().split()))
+answer = 0
+for enter in virus:
+    answer = (answer * multi) % 1000000007
+    answer += enter
+print(answer)
 
-day, rc = map(int, input().split())
-# 30일의 패턴을 구함
-day_list = [[1, 0], [0, 1], [1, 1]] + [[0, 0] for _ in range(27)]
 
-for i in range(3, day):
-    day_list[i][0] = day_list[i-1][1]
-    day_list[i][1] = day_list[i-1][0] + day_list[i-1][1]
 
-# 우선 A, B 값을 1로 두고
-A = 1
-B = 1
 
-while True:
-    if (rc - day_list[day-1][0] * A) % day_list[day-1][1] == 0:
-        B = (rc - day_list[day-1][0] * A) // day_list[day-1][1]
-        break
-    else:
-        A += 1
 
-print(A)
-print(B)
