@@ -1056,17 +1056,31 @@ import math
 
 
 
+# import sys
+# input = sys.stdin.readline
+# length, multi = map(int, input().split())
+# virus = list(map(int, input().split()))
+# answer = 0
+# for enter in virus:
+#     answer = (answer * multi) % 1000000007
+#     answer += enter
+# print(answer)
+
+
 import sys
 input = sys.stdin.readline
-length, multi = map(int, input().split())
-virus = list(map(int, input().split()))
-answer = 0
-for enter in virus:
-    answer = (answer * multi) % 1000000007
-    answer += enter
-print(answer)
-
-
-
-
+arr = [
+    " @@@   @@@ ",
+    "@   @ @   @",
+    "@    @    @",
+    "@         @",
+    " @       @ ",
+    "  @     @  ",
+    "   @   @   ",
+    "    @ @    ",
+    "     @     "]
+N = int(input())
+for tc in range(N):
+    for lines in arr:
+        print(lines)
 

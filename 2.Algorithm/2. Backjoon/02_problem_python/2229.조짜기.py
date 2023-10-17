@@ -4,18 +4,28 @@
 import sys
 input = sys.stdin.readline
 N = int(input())
-DP = [[0,0] for _ in range(N+1)]
-board = list(map(int, input().split()))
-if N == 1:
-    print(0)
-elif N == 2:
-    print(abs(board[0]-board[1]))
-else:
-    DP[1][1] = abs(board[1]-board[0])
-    for x in range(2, N):
-        DP[x][0] = max(max(DP[x-1]), max(DP[x-2]))
-        DP[x][1] = max(max(DP[x-1][0], DP[x-2]) + abs(board[x]-board[x-1]), DP[x-2][0] + abs(board[x]-board[x-2]))
-    print(max(max(DP[N-1]), max(DP[N-2])))
+scores = list(map(int, input().split()))
+start_from_DP = [[0,0,0] for _ in range(N)]
+end_here_DP = [[0,0,0] for _ in range(N)]
+start_from_DP[0] = [scores[0], scores[0], 0]
+end_here_DP[0] = [scores[0], scores[0], 0]
+for dp in range(1, N):
+    score = scores[dp]
+    start_from_DP[dp] = [score, score, max(start_from_DP[dp-1][2], end_here_DP[dp-1][2])]
+    before_min, before_max, diff = start_from_DP[dp-1]
+    up_diff = max(before_max, score) - min(before_min, score) + diff
+    connected_min, connected_max, cntd_diff = end_here_DP[dp-1]
+    down_diff = max(connected_max, score) - min(connected_min, score) - (connected_max - connected_min) +cntd_diff
+    if down_diff >= up_diff:
+        end_here_DP[dp] = [min(connected_min, score), max(connected_max, score), down_diff]
+    else:
+        end_here_DP[dp] = [min(before_min, score), max(before_max, score), up_diff]
+answer = max(start_from_DP[N-1][2], end_here_DP[N-1][2])
+# print(start_from_DP)
+# print(end_here_DP)
+print(answer)
 
-
-
+"""
+10
+2 5 7 1 3 4 8 6 9 3
+"""
