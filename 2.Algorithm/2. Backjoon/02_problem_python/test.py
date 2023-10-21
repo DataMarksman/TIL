@@ -1066,21 +1066,21 @@ import math
 #     answer += enter
 # print(answer)
 
-
-import sys
-input = sys.stdin.readline
-arr = [
-    " @@@   @@@ ",
-    "@   @ @   @",
-    "@    @    @",
-    "@         @",
-    " @       @ ",
-    "  @     @  ",
-    "   @   @   ",
-    "    @ @    ",
-    "     @     "]
-N = int(input())
-for tc in range(N):
-    for lines in arr:
-        print(lines)
+#
+# import sys
+# input = sys.stdin.readline
+# arr = [
+#     " @@@   @@@ ",
+#     "@   @ @   @",
+#     "@    @    @",
+#     "@         @",
+#     " @       @ ",
+#     "  @     @  ",
+#     "   @   @   ",
+#     "    @ @    ",
+#     "     @     "]
+# N = int(input())
+# for tc in range(N):
+#     for lines in arr:
+#         print(lines)
 

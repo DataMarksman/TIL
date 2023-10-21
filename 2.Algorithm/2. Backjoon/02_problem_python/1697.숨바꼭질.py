@@ -29,7 +29,8 @@ else:
                 if remain >= bi_index[pre_idx]:
                     answer = min(steps + left_cnt, answer)
                 else:
-                    find_diff(pre_idx - 1, ((left_cnt+1) * bi_index[pre_idx]) - remain, steps + left_cnt)
+                    find_diff(pre_idx - 1, remain - (left_cnt * bi_index[pre_idx]), steps + left_cnt)
+                    find_diff(pre_idx - 1, ((left_cnt + 1) * bi_index[pre_idx]) - remain, steps + left_cnt)
             else:
                 find_diff(pre_idx - 1, remain - (left_cnt * bi_index[pre_idx]), steps + left_cnt)
                 find_diff(pre_idx - 1, ((left_cnt+1) * bi_index[pre_idx]) - remain, steps + left_cnt+1)
@@ -45,7 +46,7 @@ else:
         left, right = right, right * 2
     left_remain = goal - left
     right_remain = right - goal
-    find_diff(idx, left_remain, start_flag)
-    find_diff(idx+1, right_remain, start_flag)
+    find_diff(idx, left_remain, idx + start_flag)
+    find_diff(idx+1, right_remain, idx + start_flag + 1)
     print(answer)
 
